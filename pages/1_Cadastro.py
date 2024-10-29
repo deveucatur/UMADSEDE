@@ -1,0 +1,107 @@
+import streamlit as st
+from database import Adolescente, session
+import pandas as pd
+from sqlalchemy import func
+
+st.header("Cadastro de Jovens e Adolescentes")
+
+def adicionar_adolescente():
+    with st.form("Adicionar Novo"):
+        nome = st.text_input("Nome")
+        data_nascimento = st.date_input("Data de Nascimento")
+        telefone = st.text_input("Telefone")
+        batizado_aguas = st.selectbox("Batizado nas Águas", ["Sim", "Não"]) == "Sim"
+        batizado_espirito = st.selectbox("Batizado no Espírito Santo", ["Sim", "Não"]) == "Sim"
+        status = st.selectbox("Status", ["Ativo", "Inativo"])
+        submit = st.form_submit_button("Adicionar")
+
+        if submit:
+            # Verificar se já existe um usuário com o mesmo nome
+            existe = session.query(Adolescente).filter(func.lower(Adolescente.nome) == nome.lower()).first()
+            if existe:
+                st.error("Já existe alguem cadastrado com este nome.")
+            else:
+                novo_adolescente = Adolescente(
+                    nome=nome,
+                    data_nascimento=data_nascimento,
+                    telefone=telefone,
+                    batizado_aguas=batizado_aguas,
+                    batizado_espirito=batizado_espirito,
+                    status=status
+                )
+                session.add(novo_adolescente)
+                session.commit()
+                st.success("Adicionado com sucesso!")
+                st.rerun()
+
+def exibir_adolescentes():
+    st.subheader("Lista de Jovens e Adolescentes")
+
+    # Filtros
+    filtro_nome = st.text_input("Filtrar por nome")
+    filtro_status = st.selectbox("Filtrar por status", ["Todos", "Ativo", "Inativo"])
+
+    query = session.query(Adolescente)
+    if filtro_nome:
+        query = query.filter(Adolescente.nome.ilike(f"%{filtro_nome}%"))
+    if filtro_status != "Todos":
+        query = query.filter_by(status=filtro_status)
+
+    data = pd.read_sql(query.statement, session.bind)
+    if data.empty:
+        st.info("Nenhum encontrado com os filtros aplicados.")
+        return
+
+    # Adicionar colunas para editar e excluir
+    data['Editar'] = 'Editar'
+
+    # Exibir tabela interativa
+    st.table(data[['id', 'nome', 'data_nascimento', 'telefone', 'batizado_aguas', 'batizado_espirito', 'status']])
+
+    # Selecionar adolescente para editar ou excluir
+    adolescente_id = st.number_input("Digite o ID do Adolescente para Editar/Excluir", min_value=0, step=1)
+    acao = st.selectbox("Ação", ["Editar"])
+
+    if acao == "Editar" and adolescente_id > 0:
+        editar_adolescente(adolescente_id)
+
+
+def editar_adolescente(adolescente_id):
+    adolescente = session.query(Adolescente).filter_by(id=adolescente_id).first()
+    if adolescente:
+        with st.form(f"Editar {adolescente.nome}"):
+            nome = st.text_input("Nome", value=adolescente.nome)
+            data_nascimento = st.date_input("Data de Nascimento", value=adolescente.data_nascimento)
+            telefone = st.text_input("Telefone", value=adolescente.telefone)
+            batizado_aguas = st.selectbox(
+                "Batizado nas Águas", ["Sim", "Não"], index=0 if adolescente.batizado_aguas else 1
+            ) == "Sim"
+            batizado_espirito = st.selectbox(
+                "Batizado no Espírito Santo", ["Sim", "Não"], index=0 if adolescente.batizado_espirito else 1
+            ) == "Sim"
+            status = st.selectbox("Status", ["Ativo", "Inativo"], index=0 if adolescente.status == "Ativo" else 1)
+            submit = st.form_submit_button("Salvar")
+
+            if submit:
+                # Verificar se o novo nome já existe em outro registro
+                existe = session.query(Adolescente).filter(
+                    func.lower(Adolescente.nome) == nome.lower(), Adolescente.id != adolescente_id
+                ).first()
+                if existe:
+                    st.error("Já existe um cadastrado com este nome.")
+                else:
+                    adolescente.nome = nome
+                    adolescente.data_nascimento = data_nascimento
+                    adolescente.telefone = telefone
+                    adolescente.batizado_aguas = batizado_aguas
+                    adolescente.batizado_espirito = batizado_espirito
+                    adolescente.status = status
+                    session.commit()
+                    st.success("Atualizado com sucesso.")
+                    st.rerun()
+    else:
+        st.error("Não encontrado.")
+
+
+adicionar_adolescente()
+exibir_adolescentes()
