@@ -5,7 +5,7 @@ import datetime
 from sqlalchemy import func
 import plotly.express as px
 
-st.set_page_config(page_title="UMADSEDE - Home", page_icon=":seedling:", layout="wide")
+st.set_page_config(page_title="UMADSEDE - Home", page_icon="🔥:", layout="wide")
 
 # CSS para estilização personalizada
 def local_css(file_name):
