@@ -12,7 +12,7 @@ GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
 
 # Configurações do GitHub
 GITHUB_USER = "deveucatur"
-GITHUB_REPO = "enraizados"
+GITHUB_REPO = "UMADSEDE"
 BACKUP_FILE = "backup_dados.json"
 BRANCH = "main"
 
