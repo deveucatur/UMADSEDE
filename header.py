@@ -1,66 +1,180 @@
-def header_html(page_name):
-    header = f"""
-    <div class="fixed-header">
-        <div class="header">
-            <div class="logo">
-                <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png" alt="Logo">
+def header_html(page, nome = ""):
+    menu9Box = f"""<div class="fixed">
+            <div class="menu">
+                <div class="logo">
+                    <img src="https://raw.githubusercontent.com/RahyanRamos/LogoNineBox/main/logo.png" alt="Logo do 9Box">
+                </div>
+                <div class="botoes">
+                    <!-- <a href="https://meusprojetos-mpjj.streamlit.app/" target="_self"><button type="button" id="home">Home</button></a>
+                    <a href="https://meusprojetos-mpjj.streamlit.app/Meus_Projetos" target="_self"><button type="button" id="projetos">Projetos</button></a>
+                    <a href="https://meusprojetos-mpjj.streamlit.app/Pr%C3%AAmio" target="_self"><button type="button" id="premio">Prêmio</button></a> -->
+                    <div class="page"><p>{page}</p></div>
+                </div>
+                <div class="nome"><p>{nome}</p></div>
+                <div class="icone">
+                    <!-- <button type="button"><img src="https://cdn-icons-png.flaticon.com/128/5261/5261124.png" alt="ícone de configurações para alteração do módulo de uso"></button>
+                    <div class="modulo">
+                        <a href="https://meusprojetos-mpjj.streamlit.app/"><button type="button">Módulo de Execução</button></a>
+                        <a href="https://meusprojetos-mpjj-mg.streamlit.app/"><button type="button">Módulo de Gestão</button></a>
+                    </div> -->
+                </div>
             </div>
-            <div class="page-name">
-                <p>{page_name}</p>
-            </div>
-        </div>
-    </div>
-    """
+        </div>"""
     return header
 
 def header_css():
-    style = """
-    .fixed-header {
-        position: fixed;
-        top: 0;
-        z-index: 9999;
-        left: 0;
-        right: 0;
-    }
+    styleMenu9Box = f""".fixed{{
+            position: fixed;
+            top: 0;
+            z-index: 999990;
+            left: 50px;
+            right: 50px;
+        }}
 
-    .header {
-        display: flex;
-        align-items: center;
-        background-color: #FF7F00;  /* Laranja */
-        color: #fff;
-        padding: 10px 20px;
-        width: 100%;
-        height: 60px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+        .menu{{
+            display: flex;
+            position: absolute;
+            align-items: center;
+            /*background: linear-gradient(to bottom, #06405c);*/
+            background-color: #06405c;
+            color: #fff;
+            padding: 10px 20px;
+            width: 100%;
+            height: 46px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }}
 
-    .logo img {
-        height: 40px;
-    }
+        .logo,
+        .botoes{{
+            margin-right: auto;
+        }}
 
-    .page-name {
-        margin-left: 20px;
-        font-size: 24px;
-        font-weight: bold;
-    }
+        .logo img{{
+            width: 100px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 10px;
+            margin: 0;
+        }}
 
-    .page-name p {
-        margin: 0;
-        color: #fff;
-    }
-
-    /* Responsividade */
-    @media (max-width: 480px) {
-        .header {
-            flex-direction: column;
-            height: auto;
-            padding: 10px;
-        }
-        .page-name {
-            margin-left: 0;
+        .botoes{{
             margin-top: 10px;
-            text-align: center;
-        }
-    }
-    """
+        }}
+
+        .botoes p{{
+            font-weight: bold;
+            background-color: #ffc000;
+            padding: 0px 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #06405c;
+        }}
+
+        .botoes button{{
+            margin-right: 10px;
+            padding: 0px 10px;
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: border-color 0.5s ease;
+        }}
+
+        .nome p{{
+            margin-right: 10px;
+            color: #ffc000;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 12px;
+        }}
+
+        .icone img{{
+            width: 35px;
+            height: 35px;
+        }}
+
+        .icone button{{
+            background-color: #9fdafc;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            width: 40px;
+            height: 40px;
+        }}
+
+        .modulo{{
+            display: none;
+            position: absolute;
+            top: auto;
+            right: 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #9fdafc;
+            height: auto;
+            width: 175px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }}
+
+        .modulo button{{
+            border-radius: 8px;
+        }}
+
+        .modulo:after{{
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 20px solid #9fdafc;
+            top: -15px;
+            right: 25px
+        }}
+
+        .icone:hover .modulo{{
+            display: block;
+        }}
+
+        .modulo button{{
+            display: block;
+            width: 100%;
+            padding: 5px;
+            text-align: left;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }}
+
+        .botoes button:hover{{
+            border: none;
+            border-bottom: 2px solid #26eda2;
+            cursor: pointer;
+        }}
+
+        .modulo button:hover{{
+            background-color: #91c1dd;
+        }}
+
+        .logo:hover{{
+            text-decoration: underline;
+        }}
+        
+        @media (max-width: 480px) {{
+            .botoes {{
+                width: 60%;
+                text-align: center;
+            }}
+
+            .nome {{
+                display: none;
+            }}
+        }}"""
     return style
+
