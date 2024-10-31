@@ -22,7 +22,7 @@ def header_css():
         display: flex;
         position: absolute;
         align-items: center;
-        justify-content: left; /* Centraliza o logo */
+        justify-content: center; /* Centraliza o logo */
         background-color: #FFF9C4; /* Cor de fundo laranja */
         color: #fff;
         padding: 10px 20px;
