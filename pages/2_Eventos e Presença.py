@@ -107,7 +107,7 @@ def registrar_presenca():
         evento_selecionado.encerrado = True
         session.commit()
         st.success("Presenças registradas e evento encerrado com sucesso!")
-        st.experimental_rerun()
+        st.rerun()
 
 def historico_eventos():
     st.subheader("Filtros de Histórico")
