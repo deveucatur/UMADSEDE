@@ -15,7 +15,7 @@ def header_html(page_name):
 
 def header_css():
     style = """
-    .fixed-header{
+    .fixed-header {
         position: fixed;
         top: 0;
         z-index: 9999;
@@ -23,7 +23,7 @@ def header_css():
         right: 0;
     }
 
-    .header{
+    .header {
         display: flex;
         align-items: center;
         background-color: #FF7F00;  /* Laranja */
@@ -34,29 +34,29 @@ def header_css():
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .logo img{
+    .logo img {
         height: 40px;
     }
 
-    .page-name{
+    .page-name {
         margin-left: 20px;
         font-size: 24px;
         font-weight: bold;
     }
 
-    .page-name p{
+    .page-name p {
         margin: 0;
         color: #fff;
     }
 
     /* Responsividade */
     @media (max-width: 480px) {
-        .header{
+        .header {
             flex-direction: column;
             height: auto;
             padding: 10px;
         }
-        .page-name{
+        .page-name {
             margin-left: 0;
             margin-top: 10px;
             text-align: center;
