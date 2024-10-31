@@ -312,6 +312,37 @@ with col2:
 # Gráficos
 st.markdown('<h3>Gráficos</h3>', unsafe_allow_html=True)
 
+# Gráfico de Presenças por Evento
+st.markdown('<h4>Presenças por Evento</h4>', unsafe_allow_html=True)
+dados_presencas = []
+for evento in eventos_filtrados:
+    presencas_evento = session.query(Presenca).filter_by(evento_id=evento.id).all()
+    total_presentes = sum(1 for p in presencas_evento if p.presente)
+    total_ausentes = sum(1 for p in presencas_evento if not p.presente)
+    dados_presencas.append({
+        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')}) - {evento.tipo}",
+        'Presentes': total_presentes,
+        'Ausentes': total_ausentes
+    })
+
+df_presencas = pd.DataFrame(dados_presencas)
+
+if not df_presencas.empty:
+    df_presencas_melted = df_presencas.melt(id_vars='Evento', value_vars=['Presentes', 'Ausentes'], var_name='Status', value_name='Quantidade')
+    fig_presencas = px.bar(
+        df_presencas_melted,
+        x='Evento',
+        y='Quantidade',
+        color='Status',
+        barmode='stack',
+        title='Presenças e Ausências por Evento',
+        color_discrete_map={'Presentes': '#2ca02c', 'Ausentes': '#d62728'}
+    )
+    fig_presencas.update_xaxes(tickangle=-45)
+    st.plotly_chart(fig_presencas, use_container_width=True)
+else:
+    st.info("Não há dados de presenças para o período selecionado.")
+	
 # Gráfico de Frequência por Pessoa
 st.markdown('<h4>Frequência por Pessoa</h4>', unsafe_allow_html=True)
 frequencia = {}
@@ -370,37 +401,6 @@ if visitantes_por_semana:
     st.plotly_chart(fig_visitantes_semana, use_container_width=True)
 else:
     st.info("Não há dados de visitantes para o período selecionado.")
-
-# Gráfico de Presenças por Evento
-st.markdown('<h4>Presenças por Evento</h4>', unsafe_allow_html=True)
-dados_presencas = []
-for evento in eventos_filtrados:
-    presencas_evento = session.query(Presenca).filter_by(evento_id=evento.id).all()
-    total_presentes = sum(1 for p in presencas_evento if p.presente)
-    total_ausentes = sum(1 for p in presencas_evento if not p.presente)
-    dados_presencas.append({
-        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')}) - {evento.tipo}",
-        'Presentes': total_presentes,
-        'Ausentes': total_ausentes
-    })
-
-df_presencas = pd.DataFrame(dados_presencas)
-
-if not df_presencas.empty:
-    df_presencas_melted = df_presencas.melt(id_vars='Evento', value_vars=['Presentes', 'Ausentes'], var_name='Status', value_name='Quantidade')
-    fig_presencas = px.bar(
-        df_presencas_melted,
-        x='Evento',
-        y='Quantidade',
-        color='Status',
-        barmode='stack',
-        title='Presenças e Ausências por Evento',
-        color_discrete_map={'Presentes': '#2ca02c', 'Ausentes': '#d62728'}
-    )
-    fig_presencas.update_xaxes(tickangle=-45)
-    st.plotly_chart(fig_presencas, use_container_width=True)
-else:
-    st.info("Não há dados de presenças para o período selecionado.")
     
 
 # Gráficos de Pizza Lado a Lado
