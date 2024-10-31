@@ -1,161 +1,94 @@
-def header_html(nome=""):
-    header = f"""<div class="fixed">
-            <div class="menu">
-                <div class="logo">
-                    <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png?raw=true" alt="Logo do 9Box">
-                </div>
-                <div class="nome"><p>{nome}</p></div>
+def header_html(page_name=""):
+    header = f"""
+    <div class="fixed-header">
+        <div class="header">
+            <div class="logo">
+                <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png?raw=true" alt="Logo">
             </div>
-        </div>"""
+            <div class="nav-menu">
+                <a href="/home" target="_self">Home</a>
+                <a href="/eventos" target="_self">Eventos</a>
+                <a href="/contato" target="_self">Contato</a>
+                <!-- Adicione mais links conforme necessário -->
+            </div>
+            <div class="user-actions">
+                <!-- Ícones de redes sociais ou ações do usuário -->
+                <!-- Exemplo: <a href="#"><img src="link_do_ícone" alt="Ícone"></a> -->
+            </div>
+        </div>
+    </div>
+    """
     return header
 
 def header_css():
-    style = f""".fixed {{
+    style = """
+    .fixed-header {
         position: fixed;
         top: 0;
-        z-index: 999990;
-        left: 50px;
-        right: 50px;
-    }}
-    
-    .menu {{
+        z-index: 9999;
+        left: 0;
+        right: 0;
+    }
+
+    .header {
         display: flex;
-        position: absolute;
         align-items: center;
-        justify-content: center; /* Centraliza o logo */
-        background-color: #ff8c00; /* Cor de fundo laranja */
+        justify-content: space-between;
+        background-color: #FF8C00;  /* Laranja */
         color: #fff;
         padding: 10px 20px;
         width: 100%;
-        height: 60px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }}
-    
-    .logo img {{
-        width: 100px;
-        font-family: 'M PLUS Rounded 1c', sans-serif;
-        font-size: 10px;
-        margin: 0;
-    }}
-    
-    .botoes {{
-        margin-top: 10px;
-    }}
-    
-    .botoes p {{
-        font-weight: bold;
-        background-color: #ffc000;
-        padding: 0px 15px;
-        border-radius: 8px;
-        font-size: 18px;
-        color: #ff8c00; /* Texto em laranja */
-    }}
-    
-    .botoes button {{
-        margin-right: 10px;
-        padding: 0px 10px;
-        border: none;
-        background-color: transparent;
+        height: 70px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-menu {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-menu a {
         color: #fff;
-        cursor: pointer;
+        text-decoration: none;
+        font-size: 18px;
         font-weight: bold;
-        font-size: 16px;
-        transition: border-color 0.5s ease;
-    }}
-    
-    .nome p {{
-        color: #ffc000;
-        font-weight: bold;
-        font-size: 16px;
-        margin-top: 12px;
-        display: none; /* Oculta o nome */
-    }}
-    
-    .icone img {{
-        width: 35px;
-        height: 35px;
-    }}
-    
-    .icone button {{
-        background-color: #ffcc99; /* Ícone com tom de laranja claro */
-        border-radius: 50%;
-        cursor: pointer;
-        border: none;
-        width: 40px;
-        height: 40px;
-    }}
-    
-    .modulo {{
-        display: none;
-        position: absolute;
-        top: auto;
-        right: 0;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #ffcc99; /* Fundo laranja claro */
-        height: auto;
-        width: 175px;
-        border-radius: 10px;
-        padding: 10px;
-        margin-top: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }}
-    
-    .modulo button {{
-        border-radius: 8px;
-    }}
-    
-    .modulo:after {{
-        content: "";
-        width: 0;
-        height: 0;
-        position: absolute;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-bottom: 20px solid #ffcc99; /* Triângulo em laranja claro */
-        top: -15px;
-        right: 25px;
-    }}
-    
-    .icone:hover .modulo {{
-        display: block;
-    }}
-    
-    .modulo button {{
-        display: block;
-        width: 100%;
-        padding: 5px;
-        text-align: left;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        font-weight: bold;
-        color: #000;
-        margin-bottom: 5px;
-    }}
-    
-    .botoes button:hover {{
-        border: none;
-        border-bottom: 2px solid #ff8c00; /* Borda de hover em laranja */
-        cursor: pointer;
-    }}
-    
-    .modulo button:hover {{
-        background-color: #ffb347; /* Fundo hover em laranja mais escuro */
-    }}
-    
-    .logo:hover {{
-        text-decoration: underline;
-    }}
-    
-    @media (max-width: 480px) {{
-        .botoes {{
-            width: 60%;
-            text-align: center;
-        }}
-    
-        .nome {{
-            display: none;
-        }}
-    }}"""
+        transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+        color: #FFD700;  /* Dourado */
+    }
+
+    .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .user-actions a img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            height: auto;
+            padding: 15px;
+        }
+        .nav-menu {
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .nav-menu a {
+            font-size: 16px;
+        }
+    }
+    """
     return style
