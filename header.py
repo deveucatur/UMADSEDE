@@ -25,9 +25,9 @@ def header_css():
         justify-content: center; /* Centraliza o logo */
         background-color: #ff8c00; /* Cor de fundo laranja */
         color: #fff;
-        padding: 1px 20px;
+        padding: 10px 20px;
         width: 100%;
-        height: 46px;
+        height: 50px;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
     }}
