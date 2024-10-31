@@ -2,6 +2,7 @@ import streamlit as st
 from database import Pessoa, session
 import pandas as pd
 from sqlalchemy import func
+from header import header_html, header_css
 
 st.set_page_config(page_title="Cadastro de Pessoas", page_icon="📝", layout="wide")
 
