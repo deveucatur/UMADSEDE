@@ -3,7 +3,7 @@ def header_html(page_name):
     <div class="fixed-header">
         <div class="header">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/RahyanRamos/LogoNineBox/main/logo.png" alt="Logo">
+                <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png" alt="Logo">
             </div>
             <div class="page-name">
                 <p>{page_name}</p>
