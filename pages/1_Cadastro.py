@@ -55,7 +55,7 @@ def adicionar_pessoa():
                 session.add(nova_pessoa)
                 session.commit()
                 st.success("Adicionado com sucesso!")
-                st.experimental_rerun()
+                st.rerun()
 
 def exibir_pessoas():
     st.subheader("Lista de Pessoas")
