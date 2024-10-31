@@ -1,11 +1,11 @@
 import streamlit as st
-from database import Adolescente, Presenca, Evento, Visitante, session
+from database import Pessoa, Presenca, Evento, Visitante, session
 import pandas as pd
 import datetime
 from sqlalchemy import func
 import plotly.express as px
 
-st.set_page_config(page_title="UMADSEDE - Home", page_icon="🔥:", layout="wide")
+st.set_page_config(page_title="UMADSEDE - Home", page_icon="🔥", layout="wide")
 
 # CSS para estilização personalizada
 def local_css(file_name):
@@ -17,7 +17,6 @@ local_css("styles.css")
 
 # Cabeçalho Principal
 st.title("UMADSEDE")
-
 
 # Seções de Propósito e Visão
 st.header("Propósito e Visão")
@@ -55,8 +54,12 @@ for event in events:
 # Dados do Sistema
 st.header("Detalhamento")
 
-# Número de adolescentes
-total_adolescentes = session.query(Adolescente).count()
+# Número de pessoas
+total_pessoas = session.query(Pessoa).count()
+
+# Número de Jovens e Adolescentes
+total_jovens = session.query(Pessoa).filter(Pessoa.tipo == "Jovem").count()
+total_adolescentes = session.query(Pessoa).filter(Pessoa.tipo == "Adolescente").count()
 
 # Aniversariantes da semana
 hoje = datetime.date.today()
@@ -64,9 +67,9 @@ dia_semana = hoje.weekday()  # 0 é segunda-feira
 inicio_semana = hoje - datetime.timedelta(days=dia_semana)
 fim_semana = inicio_semana + datetime.timedelta(days=6)
 
-aniversariantes_semana = session.query(Adolescente).filter(
-    func.strftime("%m-%d", Adolescente.data_nascimento) >= inicio_semana.strftime("%m-%d"),
-    func.strftime("%m-%d", Adolescente.data_nascimento) <= fim_semana.strftime("%m-%d")
+aniversariantes_semana = session.query(Pessoa).filter(
+    func.strftime("%m-%d", Pessoa.data_nascimento) >= inicio_semana.strftime("%m-%d"),
+    func.strftime("%m-%d", Pessoa.data_nascimento) <= fim_semana.strftime("%m-%d")
 ).all()
 
 # Eventos da semana
@@ -79,7 +82,9 @@ eventos_semana = session.query(Evento).filter(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("Total", total_adolescentes, delta=None)
+    st.metric("Total de Pessoas", total_pessoas)
+    st.metric("Total de Jovens", total_jovens)
+    st.metric("Total de Adolescentes", total_adolescentes)
 
 with col2:
     st.metric("Aniversariantes da Semana", len(aniversariantes_semana), delta=None)
@@ -90,8 +95,8 @@ with col3:
 # Listar aniversariantes
 if aniversariantes_semana:
     st.subheader("🎂 Aniversariantes da Semana")
-    for adolescente in aniversariantes_semana:
-        st.write(f"- {adolescente.nome} ({adolescente.data_nascimento.strftime('%d/%m')})")
+    for pessoa in aniversariantes_semana:
+        st.write(f"- {pessoa.nome} ({pessoa.data_nascimento.strftime('%d/%m')}) - {pessoa.tipo}")
 else:
     st.write("Nenhum aniversariante nesta semana.")
 
@@ -99,16 +104,13 @@ else:
 if eventos_semana:
     st.subheader("📆 Eventos desta Semana")
     for evento in eventos_semana:
-        st.write(f"- {evento.nome} ({evento.data.strftime('%d/%m/%Y')})")
+        st.write(f"- {evento.nome} ({evento.data.strftime('%d/%m/%Y')}) - {evento.tipo}")
 else:
     st.write("Nenhum evento nesta semana.")
 
-
-
 st.write("---")
 
-
-##DASHBORD##
+## DASHBOARD ##
 st.header("📊 Dashboard")
 
 # Obter o mês e ano atuais
@@ -116,7 +118,7 @@ mes_atual = datetime.datetime.now().month
 ano_atual = datetime.datetime.now().year
 
 st.subheader("Filtros")
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     mes = st.selectbox(
@@ -132,6 +134,12 @@ with col2:
         anos_disponiveis,
         index=0
     )
+with col3:
+    tipo_evento_filter = st.multiselect(
+        "Tipo de Evento",
+        ["Jovens", "Adolescentes", "Ambos"],
+        default=["Jovens", "Adolescentes", "Ambos"]
+    )
 
 # Data inicial e final do filtro
 data_inicio = datetime.date(ano, mes, 1)
@@ -140,15 +148,20 @@ if mes == 12:
 else:
     data_fim = datetime.date(ano, mes + 1, 1)
 
-
 # Dados Filtrados
-eventos_filtrados = session.query(Evento).filter(Evento.data >= data_inicio, Evento.data < data_fim).all()
+eventos_filtrados = session.query(Evento).filter(
+    Evento.data >= data_inicio,
+    Evento.data < data_fim,
+    Evento.tipo.in_(tipo_evento_filter)
+).all()
 eventos_ids = [evento.id for evento in eventos_filtrados]
 
 presencas_filtradas = session.query(Presenca).filter(Presenca.evento_id.in_(eventos_ids)).all()
 
-# Total de Adolescentes
-total_adolescentes = session.query(Adolescente).count()
+# Total de Pessoas
+total_pessoas = session.query(Pessoa).count()
+total_jovens = session.query(Pessoa).filter(Pessoa.tipo == "Jovem").count()
+total_adolescentes = session.query(Pessoa).filter(Pessoa.tipo == "Adolescente").count()
 
 # Total de Eventos no Mês
 total_eventos = len(eventos_filtrados)
@@ -165,10 +178,16 @@ visitantes_mes = session.query(Visitante).filter(Visitante.evento_id.in_(eventos
 
 # Métricas
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Total", total_adolescentes)
-col2.metric("Eventos no Mês", total_eventos)
-col3.metric("Presença Média por Evento", f"{media_presencas:.1f}")
-col4.metric("Visitantes no Mês", visitantes_mes)
+with col1:
+    st.metric("Total de Pessoas", total_pessoas)
+    st.metric("Total de Jovens", total_jovens)
+    st.metric("Total de Adolescentes", total_adolescentes)
+with col2:
+    st.metric("Eventos no Mês", total_eventos)
+with col3:
+    st.metric("Presença Média por Evento", f"{media_presencas:.1f}")
+with col4:
+    st.metric("Visitantes no Mês", visitantes_mes)
 
 # Gráfico de Presenças por Evento
 st.subheader("Presenças por Evento")
@@ -178,7 +197,7 @@ for evento in eventos_filtrados:
     total_presentes = sum(1 for p in presencas_evento if p.presente)
     total_ausentes = sum(1 for p in presencas_evento if not p.presente)
     dados_presencas.append({
-        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')})",
+        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')}) - {evento.tipo}",
         'Presentes': total_presentes,
         'Ausentes': total_ausentes
     })
@@ -197,24 +216,25 @@ if not df_presencas.empty:
 else:
     st.info("Não há dados de presenças para o período selecionado.")
 
-# Gráfico de Frequência por Adolescente
+# Gráfico de Frequência por Pessoa
 st.subheader("Frequência no Mês")
 frequencia = {}
 for presenca in presencas_filtradas:
-    if presenca.adolescente_id not in frequencia:
-        frequencia[presenca.adolescente_id] = {'Presenças': 0, 'Ausências': 0}
+    if presenca.pessoa_id not in frequencia:
+        frequencia[presenca.pessoa_id] = {'Presenças': 0, 'Ausências': 0}
     if presenca.presente:
-        frequencia[presenca.adolescente_id]['Presenças'] += 1
+        frequencia[presenca.pessoa_id]['Presenças'] += 1
     else:
-        frequencia[presenca.adolescente_id]['Ausências'] += 1
+        frequencia[presenca.pessoa_id]['Ausências'] += 1
 
 dados_frequencia = []
-for adolescente_id, freq in frequencia.items():
-    adolescente = session.query(Adolescente).filter_by(id=adolescente_id).first()
+for pessoa_id, freq in frequencia.items():
+    pessoa = session.query(Pessoa).filter_by(id=pessoa_id).first()
     total_presencas = freq['Presenças']
     total_ausencias = freq['Ausências']
     dados_frequencia.append({
-        'Nome': adolescente.nome,
+        'Nome': pessoa.nome,
+        'Tipo': pessoa.tipo,
         'Presenças': total_presencas,
         'Ausências': total_ausencias
     })
@@ -226,7 +246,8 @@ if not df_frequencia.empty:
         df_frequencia.sort_values('Presenças', ascending=False),
         x='Nome',
         y=['Presenças', 'Ausências'],
-        title="Frequência de Presença por Adolescente",
+        color='Tipo',
+        title="Frequência de Presença por Pessoa",
         labels={'value': 'Quantidade', 'variable': 'Status'}
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -239,7 +260,7 @@ dados_visitantes = []
 for evento in eventos_filtrados:
     visitantes_evento = session.query(Visitante).filter_by(evento_id=evento.id).count()
     dados_visitantes.append({
-        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')})",
+        'Evento': f"{evento.nome} ({evento.data.strftime('%d/%m')}) - {evento.tipo}",
         'Visitantes': visitantes_evento
     })
 
