@@ -14,12 +14,13 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Defina o nome da página atual
-page_name = "Home"  # Por exemplo, "Home", "Eventos", etc.
 
 # Gere o HTML e o CSS do cabeçalho
-header_html_content = header_html(page_name)
+header_html_content = header_html("Home")
 header_css_content = header_css()
+
+st.write(f"<div>{header_html_content}</div>", unsafe_allow_html=True)
+st.write(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
 
 # Insira o CSS na página
 st.markdown(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
