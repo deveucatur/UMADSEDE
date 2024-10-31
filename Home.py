@@ -28,17 +28,7 @@ st.markdown(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
 # Insira o cabeçalho na página
 st.markdown(header_html_content, unsafe_allow_html=True)
 
-# Ajustar o espaçamento do conteúdo principal para não ficar oculto pelo cabeçalho
-st.markdown(
-    """
-    <style>
-        .main-content {
-            margin-top: 80px;  /* Ajuste este valor conforme a altura do seu cabeçalho */
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 
 # Aplicando um tema personalizado com CSS
