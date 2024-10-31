@@ -4,7 +4,7 @@ import pandas as pd
 import datetime
 from header import header_html, header_css
 
-st.set_page_config(page_title="Eventos e Presença", page_icon="📅", layout="wide")
+st.set_page_config(page_title="Eventos e Presença", page_icon="🔥", layout="wide")
 
 
 # Gere o HTML e o CSS do cabeçalho
