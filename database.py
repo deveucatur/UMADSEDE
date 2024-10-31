@@ -1,13 +1,14 @@
-from sqlalchemy import create_engine, Column, Integer, String, Date, Boolean, Text, ForeignKey, UniqueConstraint
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import create_engine, Column, Integer, String, Date, Boolean, Text, ForeignKey
+from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 import datetime
 
-engine = create_engine('sqlite:///adolescentes.db')
+# Criação do engine e sessão
+engine = create_engine('sqlite:///database.db')
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
-from database import Base
 
+# Definição dos modelos
 class Pessoa(Base):
     __tablename__ = 'pessoas'
     id = Column(Integer, primary_key=True)
@@ -20,7 +21,6 @@ class Pessoa(Base):
     tipo = Column(String)  # 'Jovem' ou 'Adolescente'
     observacao = Column(Text)
 
-
 class Evento(Base):
     __tablename__ = 'eventos'
     id = Column(Integer, primary_key=True)
@@ -28,7 +28,7 @@ class Evento(Base):
     data = Column(Date)
     encerrado = Column(Boolean, default=False)
     tipo = Column(String)  # 'Jovens', 'Adolescentes' ou 'Ambos'
-    
+
 class Visitante(Base):
     __tablename__ = 'visitantes'
     id = Column(Integer, primary_key=True)
@@ -40,7 +40,6 @@ class Visitante(Base):
     convidado = relationship('Pessoa', foreign_keys=[convidado_por])
     evento = relationship('Evento')
 
-
 class Presenca(Base):
     __tablename__ = 'presencas'
     id = Column(Integer, primary_key=True)
@@ -51,4 +50,5 @@ class Presenca(Base):
     pessoa = relationship('Pessoa')
     evento = relationship('Evento')
 
+# Criação das tabelas no banco de dados
 Base.metadata.create_all(engine)
