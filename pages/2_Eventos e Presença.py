@@ -86,30 +86,33 @@ def registrar_presenca():
 
         # Visitantes
         st.subheader("Adicionar Visitantes")
-        num_visitantes = st.number_input("Número de Visitantes", min_value=0, step=1)
-        visitantes = []
-        for i in range(int(num_visitantes)):
-            st.markdown(f"**Visitante {i+1}**")
-            nome_visitante = st.text_input(f"Nome do Visitante {i+1}", key=f"nome_visitante_{i}")
-            telefone_visitante = st.text_input(f"Telefone do Visitante {i+1}", key=f"telefone_visitante_{i}")
+        num_visitantes = st.number_input("Número de Visitantes", min_value=0, step=1, key='num_visitantes')
 
-            if pessoas:
-                convidado_por = st.selectbox(
-                    f"Convidado por",
-                    pessoas,
-                    format_func=lambda x: x.nome,
-                    key=f"convidado_por_{i}"
-                )
-                convidado_por_id = convidado_por.id
-            else:
-                st.warning("Não há pessoas disponíveis para selecionar como 'Convidado por'.")
-                convidado_por_id = None
+        if num_visitantes > 0:
+            visitantes = []
+            for i in range(int(num_visitantes)):
+                st.markdown(f"**Visitante {i+1}**")
+                col1, col2, col3 = st.columns([3, 3, 4])
+                with col1:
+                    nome_visitante = st.text_input(f"Nome", key=f"nome_visitante_{i}")
+                with col2:
+                    telefone_visitante = st.text_input(f"Telefone", key=f"telefone_visitante_{i}")
+                with col3:
+                    convidado_por = st.selectbox(
+                        f"Convidado por",
+                        [None] + pessoas,
+                        format_func=lambda x: x.nome if x else "Selecione",
+                        key=f"convidado_por_{i}"
+                    )
+                    convidado_por_id = convidado_por.id if convidado_por else None
 
-            visitantes.append({
-                'nome': nome_visitante,
-                'telefone': telefone_visitante,
-                'convidado_por_id': convidado_por_id
-            })
+                visitantes.append({
+                    'nome': nome_visitante,
+                    'telefone': telefone_visitante,
+                    'convidado_por_id': convidado_por_id
+                })
+        else:
+            visitantes = []
 
         if st.button("Registrar Presenças"):
             # Criar um conjunto de IDs dos presentes
@@ -193,11 +196,15 @@ def historico_eventos():
             'Tipo': evento.tipo
         } for evento in eventos_filtrados])
 
+        # Exibir a tabela de eventos
         st.dataframe(df_eventos, use_container_width=True)
 
-        # Selecionar um evento para ver detalhes
-        evento_ids = df_eventos['ID'].tolist()
-        evento_selecionado_id = st.selectbox("Selecione um Evento para ver detalhes", evento_ids)
+        # Criar opções de seleção com ID, Nome e Tipo
+        eventos_opcoes = df_eventos.apply(lambda row: f"{row['ID']} - {row['Nome']} ({row['Tipo']})", axis=1)
+        evento_selecionado_str = st.selectbox("Selecione um Evento para ver detalhes", eventos_opcoes)
+
+        # Extrair o ID do evento selecionado
+        evento_selecionado_id = int(evento_selecionado_str.split(' - ')[0])
         evento_selecionado = session.query(Evento).filter_by(id=evento_selecionado_id).first()
 
         if evento_selecionado:
