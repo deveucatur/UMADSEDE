@@ -4,7 +4,21 @@ import pandas as pd
 import datetime
 
 st.set_page_config(page_title="Eventos e Presença", page_icon="📅", layout="wide")
+
+
+# Gere o HTML e o CSS do cabeçalho
+header_html_content = header_html()
+header_css_content = header_css()
+
+# Insira o CSS na página (antes do HTML)
+st.markdown(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
+
+# Insira o cabeçalho na página
+st.markdown(header_html_content, unsafe_allow_html=True)
+
+
 st.header("📅 Eventos e Presença")
+
 
 # Organização em abas
 tab1, tab2, tab3 = st.tabs(["Criar Evento", "Registrar Presença", "Histórico de Eventos"])
