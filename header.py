@@ -1,5 +1,5 @@
 def header_html(page, nome = ""):
-    menu9Box = f"""<div class="fixed">
+    header = f"""<div class="fixed">
             <div class="menu">
                 <div class="logo">
                     <img src="https://raw.githubusercontent.com/RahyanRamos/LogoNineBox/main/logo.png" alt="Logo do 9Box">
@@ -23,7 +23,7 @@ def header_html(page, nome = ""):
     return header
 
 def header_css():
-    styleMenu9Box = f""".fixed{{
+    style = f""".fixed{{
             position: fixed;
             top: 0;
             z-index: 999990;
