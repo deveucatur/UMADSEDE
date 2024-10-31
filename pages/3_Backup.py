@@ -6,6 +6,7 @@ import requests
 import datetime
 import base64
 import sqlalchemy
+from header import header_html, header_css
 
 # Gere o HTML e o CSS do cabeçalho
 header_html_content = header_html()
