@@ -32,7 +32,7 @@ def registrar_presenca():
         ~Evento.id.in_(session.query(Presenca.evento_id).distinct()),
         Evento.encerrado == False
     ).all()
-    
+
     if not eventos_sem_presenca:
         st.info("Não há eventos sem presença registrada.")
         return
@@ -43,15 +43,29 @@ def registrar_presenca():
         format_func=lambda x: f"{x.nome} - {x.data.strftime('%d/%m/%Y')} ({x.tipo})"
     )
 
-    # Filtrar pessoas com base no tipo do evento
+    # Mapear o tipo de evento para o tipo de pessoa
     if evento_selecionado.tipo == "Ambos":
         pessoas = session.query(Pessoa).filter(Pessoa.status == "Ativo").all()
     else:
-        tipo_pessoa = evento_selecionado.tipo.rstrip('s')  # Remove 's' de 'Jovens' ou 'Adolescentes'
-        pessoas = session.query(Pessoa).filter(
-            Pessoa.status == "Ativo",
-            Pessoa.tipo == tipo_pessoa
-        ).all()
+        tipo_evento = evento_selecionado.tipo
+        if tipo_evento == 'Jovens':
+            tipo_pessoa = 'Jovem'
+        elif tipo_evento == 'Adolescentes':
+            tipo_pessoa = 'Adolescente'
+        else:
+            tipo_pessoa = None
+
+        if tipo_pessoa:
+            pessoas = session.query(Pessoa).filter(
+                Pessoa.status == "Ativo",
+                Pessoa.tipo == tipo_pessoa
+            ).all()
+        else:
+            pessoas = []
+
+    if not pessoas:
+        st.warning("Não há pessoas disponíveis para este tipo de evento.")
+        return
 
     presentes = st.multiselect(
         "Selecione os Presentes",
@@ -67,16 +81,23 @@ def registrar_presenca():
         with st.expander(f"Visitante {i+1}"):
             nome_visitante = st.text_input(f"Nome do Visitante {i+1}", key=f"nome_visitante_{i}")
             telefone_visitante = st.text_input(f"Telefone do Visitante {i+1}", key=f"telefone_visitante_{i}")
-            convidado_por = st.selectbox(
-                f"Convidado por",
-                pessoas,
-                format_func=lambda x: x.nome,
-                key=f"convidado_por_{i}"
-            )
+
+            if pessoas:
+                convidado_por = st.selectbox(
+                    f"Convidado por",
+                    pessoas,
+                    format_func=lambda x: x.nome,
+                    key=f"convidado_por_{i}"
+                )
+                convidado_por_id = convidado_por.id
+            else:
+                st.warning("Não há pessoas disponíveis para selecionar como 'Convidado por'.")
+                convidado_por_id = None
+
             visitantes.append({
                 'nome': nome_visitante,
                 'telefone': telefone_visitante,
-                'convidado_por_id': convidado_por.id
+                'convidado_por_id': convidado_por_id
             })
 
     if st.button("Registrar Presenças"):
@@ -107,7 +128,7 @@ def registrar_presenca():
         evento_selecionado.encerrado = True
         session.commit()
         st.success("Presenças registradas e evento encerrado com sucesso!")
-        st.rerun()
+        st.experimental_rerun()
 
 def historico_eventos():
     st.subheader("Filtros de Histórico")
