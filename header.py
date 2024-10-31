@@ -156,7 +156,6 @@ def header_css():
     
         .nome {
             display: none;
-        }
-    }"""
+        }}"""
     return style
 
