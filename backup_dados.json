@@ -547,7 +547,7 @@
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
-            "tipo": "Jovem",
+            "tipo": "Adolescente",
             "observacao": ""
         },
         {
@@ -693,7 +693,7 @@
             "tipo": "Jovem",
             "observacao": ""
         },
-                {
+        {
             "id": 64,
             "nome": "Miguel Novas Vieira",
             "data_nascimento": "2012-10-29",
@@ -805,7 +805,7 @@
         },
         {
             "id": 74,
-            "nome": "João Pedro de Lima Barros",
+            "nome": "Jo\u00e3o Pedro de Lima Barros",
             "data_nascimento": "2009-12-15",
             "telefone": "",
             "batizado_aguas": true,
@@ -827,7 +827,7 @@
         },
         {
             "id": 76,
-            "nome": "Letícia Rodrigues Rocha",
+            "nome": "Let\u00edcia Rodrigues Rocha",
             "data_nascimento": "2010-07-05",
             "telefone": "",
             "batizado_aguas": false,
@@ -838,7 +838,7 @@
         },
         {
             "id": 77,
-            "nome": "Evelyn Vitória Macedo",
+            "nome": "Evelyn Vit\u00f3ria Macedo",
             "data_nascimento": "2012-04-10",
             "telefone": "",
             "batizado_aguas": false,
@@ -860,7 +860,7 @@
         },
         {
             "id": 79,
-            "nome": "Flavio França de Souza",
+            "nome": "Flavio Fran\u00e7a de Souza",
             "data_nascimento": "2012-07-23",
             "telefone": "",
             "batizado_aguas": false,
@@ -937,7 +937,7 @@
         },
         {
             "id": 86,
-            "nome": "Eloá Nathaly dos Santos Nascimento",
+            "nome": "Elo\u00e1 Nathaly dos Santos Nascimento",
             "data_nascimento": "2010-12-11",
             "telefone": "",
             "batizado_aguas": true,
@@ -1025,7 +1025,7 @@
         },
         {
             "id": 94,
-            "nome": "Estefany Vitória Rodrigues Alicrina",
+            "nome": "Estefany Vit\u00f3ria Rodrigues Alicrina",
             "data_nascimento": "2011-10-10",
             "telefone": "",
             "batizado_aguas": true,
@@ -1058,7 +1058,7 @@
         },
         {
             "id": 97,
-            "nome": "Assendor Junior de Souza França ",
+            "nome": "Assendor Junior de Souza Fran\u00e7a ",
             "data_nascimento": "2008-06-27",
             "telefone": "",
             "batizado_aguas": true,
