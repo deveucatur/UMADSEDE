@@ -1,5 +1,5 @@
 import streamlit as st
-from database import Base, engine, session, Adolescente, Evento, Presenca, Visitante
+from database import Base, engine, session, Pessoa, Evento, Presenca, Visitante
 import json
 import os
 import requests
@@ -18,7 +18,7 @@ BRANCH = "main"
 
 def exportar_dados():
     # Obter todos os dados das tabelas
-    adolescentes = session.query(Adolescente).all()
+    pessoas = session.query(Pessoa).all()
     eventos = session.query(Evento).all()
     presencas = session.query(Presenca).all()
     visitantes = session.query(Visitante).all()
@@ -34,7 +34,7 @@ def exportar_dados():
 
     # Converter para formatos serializáveis em JSON
     dados = {
-        "adolescentes": [to_dict(a) for a in adolescentes],
+        "pessoas": [to_dict(p) for p in pessoas],
         "eventos": [to_dict(e) for e in eventos],
         "presencas": [to_dict(p) for p in presencas],
         "visitantes": [to_dict(v) for v in visitantes],
@@ -95,7 +95,7 @@ def restaurar_dados():
         # Limpar as tabelas existentes
         session.query(Presenca).delete()
         session.query(Visitante).delete()
-        session.query(Adolescente).delete()
+        session.query(Pessoa).delete()
         session.query(Evento).delete()
         session.commit()
 
@@ -119,10 +119,10 @@ def restaurar_dados():
             return processed_data
 
         # Restaurar dados
-        for item in dados["adolescentes"]:
-            item = process_item(Adolescente, item)
-            novo_adolescente = Adolescente(**item)
-            session.add(novo_adolescente)
+        for item in dados["pessoas"]:
+            item = process_item(Pessoa, item)
+            nova_pessoa = Pessoa(**item)
+            session.add(nova_pessoa)
 
         for item in dados["eventos"]:
             item = process_item(Evento, item)
