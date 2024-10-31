@@ -1,5 +1,5 @@
 import streamlit as st
-from database import Evento, Presenca, Adolescente, Visitante, session
+from database import Evento, Presenca, Pessoa, Visitante, session
 import pandas as pd
 import datetime
 
@@ -10,20 +10,28 @@ def criar_evento():
     with st.form("Criar Evento"):
         nome_evento = st.text_input("Nome do Evento")
         data_evento = st.date_input("Data do Evento", value=datetime.date.today())
+        tipo_evento = st.selectbox("Tipo do Evento", ["Jovens", "Adolescentes", "Ambos"])
         submit = st.form_submit_button("Criar Evento")
 
         if submit:
-            novo_evento = Evento(nome=nome_evento, data=data_evento)
+            novo_evento = Evento(
+                nome=nome_evento,
+                data=data_evento,
+                tipo=tipo_evento,
+                encerrado=False
+            )
             session.add(novo_evento)
             session.commit()
             st.success(f"Evento '{nome_evento}' criado com sucesso!")
+
 def registrar_presenca():
     st.subheader("Registrar Presença")
 
     # Selecionar eventos que ainda não tiveram presença registrada
     eventos_sem_presenca = session.query(Evento).filter(
-        ~Evento.id.in_(session.query(Presenca.evento_id).distinct())
-    ).filter_by(encerrado=False).all()
+        ~Evento.id.in_(session.query(Presenca.evento_id).distinct()),
+        Evento.encerrado == False
+    ).all()
     
     if not eventos_sem_presenca:
         st.info("Não há eventos sem presença registrada.")
@@ -32,19 +40,22 @@ def registrar_presenca():
     evento_selecionado = st.selectbox(
         "Selecione o Evento",
         eventos_sem_presenca,
-        format_func=lambda x: f"{x.nome} - {x.data.strftime('%d/%m/%Y')}"
+        format_func=lambda x: f"{x.nome} - {x.data.strftime('%d/%m/%Y')} ({x.tipo})"
     )
 
-    # Verificar se já foi registrada presença neste evento
-    presencas_existentes = session.query(Presenca).filter_by(evento_id=evento_selecionado.id).first()
-    if presencas_existentes:
-        st.warning("A presença já foi registrada para este evento.")
-        return
+    # Filtrar pessoas com base no tipo do evento
+    if evento_selecionado.tipo == "Ambos":
+        pessoas = session.query(Pessoa).filter(Pessoa.status == "Ativo").all()
+    else:
+        tipo_pessoa = evento_selecionado.tipo.rstrip('s')  # Remove 's' de 'Jovens' ou 'Adolescentes'
+        pessoas = session.query(Pessoa).filter(
+            Pessoa.status == "Ativo",
+            Pessoa.tipo == tipo_pessoa
+        ).all()
 
-    adolescentes = session.query(Adolescente).filter_by(status="Ativo").all()
     presentes = st.multiselect(
         "Selecione os Presentes",
-        adolescentes,
+        pessoas,
         format_func=lambda x: x.nome
     )
 
@@ -57,8 +68,8 @@ def registrar_presenca():
             nome_visitante = st.text_input(f"Nome do Visitante {i+1}", key=f"nome_visitante_{i}")
             telefone_visitante = st.text_input(f"Telefone do Visitante {i+1}", key=f"telefone_visitante_{i}")
             convidado_por = st.selectbox(
-                f"Convidado por (Adolescente)",
-                adolescentes,
+                f"Convidado por",
+                pessoas,
                 format_func=lambda x: x.nome,
                 key=f"convidado_por_{i}"
             )
@@ -70,13 +81,13 @@ def registrar_presenca():
 
     if st.button("Registrar Presenças"):
         # Criar um conjunto de IDs dos presentes
-        presentes_ids = {adolescente.id for adolescente in presentes}
+        presentes_ids = {pessoa.id for pessoa in presentes}
 
         # Registrar presença dos presentes e ausentes
-        for adolescente in adolescentes:
-            presente = adolescente.id in presentes_ids
+        for pessoa in pessoas:
+            presente = pessoa.id in presentes_ids
             nova_presenca = Presenca(
-                adolescente_id=adolescente.id,
+                pessoa_id=pessoa.id,
                 evento_id=evento_selecionado.id,
                 presente=presente
             )
@@ -96,18 +107,16 @@ def registrar_presenca():
         evento_selecionado.encerrado = True
         session.commit()
         st.success("Presenças registradas e evento encerrado com sucesso!")
-        st.rerun()
-
-
+        st.experimental_rerun()
 
 def historico_eventos():
     st.subheader("Filtros de Histórico")
 
-    # Filtro de Mês e Ano
+    # Filtro de Mês, Ano e Tipo de Evento
     mes_atual = datetime.datetime.now().month
     ano_atual = datetime.datetime.now().year
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         mes = st.selectbox(
             "Selecione o Mês",
@@ -118,8 +127,14 @@ def historico_eventos():
     with col2:
         anos_disponiveis = [ano_atual, ano_atual - 1]
         ano = st.selectbox("Selecione o Ano", anos_disponiveis, index=0)
+    with col3:
+        tipo_filter = st.multiselect(
+            "Tipo de Evento",
+            ["Jovens", "Adolescentes", "Ambos"],
+            default=["Jovens", "Adolescentes", "Ambos"]
+        )
 
-    # Filtrar eventos pelo mês e ano
+    # Filtrar eventos pelo mês, ano e tipo
     data_inicio = datetime.date(ano, mes, 1)
     if mes == 12:
         data_fim = datetime.date(ano + 1, 1, 1)
@@ -128,7 +143,8 @@ def historico_eventos():
 
     eventos_filtrados = session.query(Evento).filter(
         Evento.data >= data_inicio,
-        Evento.data < data_fim
+        Evento.data < data_fim,
+        Evento.tipo.in_(tipo_filter)
     ).all()
 
     if not eventos_filtrados:
@@ -137,17 +153,17 @@ def historico_eventos():
 
     # Listar Eventos Filtrados
     for evento in eventos_filtrados:
-        with st.expander(f"{evento.nome} - {evento.data.strftime('%d/%m/%Y')}"):
+        with st.expander(f"{evento.nome} - {evento.data.strftime('%d/%m/%Y')} ({evento.tipo})"):
             # Calcular Resumo de Frequência para o Evento
             presencas = session.query(Presenca).filter_by(evento_id=evento.id).all()
             presentes = sum(1 for p in presencas if p.presente)
             ausentes = sum(1 for p in presencas if not p.presente)
-            visitantes = session.query(Visitante).filter_by(evento_id=evento.id).count()
-            total_adolescentes = presentes + ausentes
+            visitantes_count = session.query(Visitante).filter_by(evento_id=evento.id).count()
+            total_pessoas = presentes + ausentes
 
             # Calcular Percentual de Frequência
-            if total_adolescentes > 0:
-                percentual_frequencia = (presentes / total_adolescentes) * 100
+            if total_pessoas > 0:
+                percentual_frequencia = (presentes / total_pessoas) * 100
             else:
                 percentual_frequencia = 0
 
@@ -155,28 +171,29 @@ def historico_eventos():
             st.markdown("#### Resumo de Frequência")
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("Total Presentes", presentes)
-            col2.metric("Total Visitantes", visitantes)
+            col2.metric("Total Visitantes", visitantes_count)
             col3.metric("Total Ausentes", ausentes)
             col4.metric("Percentual de Frequência", f"{percentual_frequencia:.2f}%")
 
             # Listar Presenças para o Evento
             data = []
             for presenca in presencas:
-                adolescente = session.query(Adolescente).filter_by(id=presenca.adolescente_id).first()
+                pessoa = session.query(Pessoa).filter_by(id=presenca.pessoa_id).first()
                 data.append({
-                    'Nome': adolescente.nome,
+                    'Nome': pessoa.nome,
+                    'Tipo': pessoa.tipo,
                     'Presente': 'Sim' if presenca.presente else 'Não'
                 })
             df = pd.DataFrame(data)
             st.table(df)
 
             # Mostrar Visitantes do Evento
-            visitantes = session.query(Visitante).filter_by(evento_id=evento.id).all()
-            if visitantes:
+            visitantes_list = session.query(Visitante).filter_by(evento_id=evento.id).all()
+            if visitantes_list:
                 st.write("**Visitantes:**")
                 data_visitantes = []
-                for visitante in visitantes:
-                    convidado_por = session.query(Adolescente).filter_by(id=visitante.convidado_por).first()
+                for visitante in visitantes_list:
+                    convidado_por = session.query(Pessoa).filter_by(id=visitante.convidado_por).first()
                     data_visitantes.append({
                         'Nome': visitante.nome,
                         'Telefone': visitante.telefone,
@@ -185,15 +202,7 @@ def historico_eventos():
                 df_visitantes = pd.DataFrame(data_visitantes)
                 st.table(df_visitantes)
 
-
-# Adicionar o campo 'presente' na tabela Presenca
-def atualizar_presenca_model():
-    from sqlalchemy import Column, Boolean
-    if not hasattr(Presenca, 'presente'):
-        Presenca.presente = Column(Boolean)
-        Presenca.__table__.create(session.bind, checkfirst=True)
-
-atualizar_presenca_model()
+# Chamada das funções
 criar_evento()
 registrar_presenca()
 historico_eventos()
