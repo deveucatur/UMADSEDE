@@ -33,7 +33,7 @@ def header_css():
     }}
     
     .logo img {{
-        width: 100px;
+        width: 80px;
         font-family: 'M PLUS Rounded 1c', sans-serif;
         font-size: 10px;
         margin: 0;
