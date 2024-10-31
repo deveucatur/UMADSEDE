@@ -4,6 +4,7 @@ import pandas as pd
 import datetime
 from sqlalchemy import func
 import plotly.express as px
+from header import header_html, header_css
 
 # Configurações iniciais
 st.set_page_config(
@@ -12,6 +13,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# Defina o nome da página atual
+page_name = "Home"  # Por exemplo, "Home", "Eventos", etc.
+
+# Gere o HTML e o CSS do cabeçalho
+header_html_content = header_html(page_name)
+header_css_content = header_css()
+
+# Insira o CSS na página
+st.markdown(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
+
+# Insira o cabeçalho na página
+st.markdown(header_html_content, unsafe_allow_html=True)
 
 # Aplicando um tema personalizado com CSS
 def add_custom_css():
@@ -90,28 +104,27 @@ add_custom_css()
 st.markdown('<h1 class="main-header">UMADSEDE - União da Mocidade e Adolescentes da Sede</h1>', unsafe_allow_html=True)
 
 # Seção de Eventos
-st.markdown('<h2 class="sub-header">Eventos</h2>', unsafe_allow_html=True)
-events = [
-    {
-        "nome": "Culto de Sábado",
-        "descricao": "Um momento especial de adoração, louvor e comunhão entre os jovens e adolescentes."
-    },
-    {
-        "nome": "Confra UMADSEDE",
-        "descricao": "Uma conferência anual que reúne jovens e adolescentes para momentos de aprendizado e celebração."
-    },
-    {
-        "nome": "Festa da UMADSEDE",
-        "descricao": "Um evento festivo com atividades, música e integração para fortalecer os laços entre os participantes."
-    }
-]
-
-for event in events:
-    with st.expander(f"📅 {event['nome']}"):
-        st.write(event["descricao"])
+#st.markdown('<h2 class="sub-header">Eventos</h2>', unsafe_allow_html=True)
+#events = [
+#    {
+#        "nome": "Culto de Sábado",
+#        "descricao": "Um momento especial de adoração, louvor e comunhão entre os jovens e adolescentes."
+#    },
+#    {
+#        "nome": "Confra UMADSEDE",
+#        "descricao": "Uma conferência anual que reúne jovens e adolescentes para momentos de aprendizado e celebração."
+#    },
+#    {
+#        "nome": "Festa da UMADSEDE",
+#        "descricao": "Um evento festivo com atividades, música e integração para fortalecer os laços entre os participantes."
+#    }
+#]
+#
+#for event in events:
+#    with st.expander(f"📅 {event['nome']}"):
+ #       st.write(event["descricao"])
 
 # Dados Globais
-st.markdown('<h2 class="sub-header">Dados Globais</h2>', unsafe_allow_html=True)
 total_pessoas = session.query(Pessoa).count()
 total_jovens = session.query(Pessoa).filter(Pessoa.tipo == "Jovem", Pessoa.status == "Ativo").count()
 total_adolescentes = session.query(Pessoa).filter(Pessoa.tipo == "Adolescente", Pessoa.status == "Ativo").count()
