@@ -8,6 +8,8 @@ import base64
 import sqlalchemy
 from header import header_html, header_css
 
+st.set_page_config(page_title="Backup", page_icon="🔥", layout="wide")
+
 # Gere o HTML e o CSS do cabeçalho
 header_html_content = header_html()
 header_css_content = header_css()
