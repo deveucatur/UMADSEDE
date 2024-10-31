@@ -15,11 +15,9 @@ st.set_page_config(
 )
 
 
-# Defina o nome da página atual
-page_name = "Home"
 
 # Gere o HTML e o CSS do cabeçalho
-header_html_content = header_html(page_name)
+header_html_content = header_html()
 header_css_content = header_css()
 
 # Insira o CSS na página (antes do HTML)
