@@ -103,7 +103,7 @@ def add_custom_css():
 add_custom_css()
 
 # Cabeçalho Principal
-st.markdown('<h1 class="main-header">UMADSEDE - União da Mocidade e Adolescentes da Sede</h1>', unsafe_allow_html=True)
+#st.markdown('<h1 class="main-header">UMADSEDE - União da Mocidade e Adolescentes da Sede</h1>', unsafe_allow_html=True)
 
 # Seção de Eventos
 #st.markdown('<h2 class="sub-header">Eventos</h2>', unsafe_allow_html=True)
@@ -136,7 +136,7 @@ total_batizados_espirito = session.query(Pessoa).filter(Pessoa.batizado_espirito
 total_nao_batizados_espirito = session.query(Pessoa).filter(Pessoa.batizado_espirito == False, Pessoa.status == "Ativo").count()
 
 # Exibir métricas globais
-st.markdown('<h3>Métricas Globais</h3>', unsafe_allow_html=True)
+#st.markdown('<h3>Métricas Globais</h3>', unsafe_allow_html=True)
 
 # Organizar métricas em duas linhas para melhor responsividade
 col1, col2, col3 = st.columns(3)
