@@ -27,13 +27,13 @@ def header_css():
         color: #fff;
         padding: 10px 20px;
         width: 100%;
-        height: 55px;
+        height: 60px;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
     }}
     
     .logo img {{
-        width: 80px;
+        width: 100px;
         font-family: 'M PLUS Rounded 1c', sans-serif;
         font-size: 10px;
         margin: 0;
