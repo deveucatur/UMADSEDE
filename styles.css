@@ -1,16 +1,1 @@
-/* styles.css */
-body {
-    background-color: #ffcd00;
-}
-h1, h2, h3 {
-    color: #ffcd00;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.stMetric {
-    background-color: #FFECC7;
-    border-radius: 8px;
-    padding: 10px;
-}
-.stExpanderHeader {
-    font-weight: bold;
-}
+
