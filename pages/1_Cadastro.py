@@ -6,6 +6,17 @@ from sqlalchemy import func
 st.set_page_config(page_title="Cadastro de Pessoas", page_icon="📝", layout="wide")
 st.header("Cadastro de Pessoas")
 
+
+# Gere o HTML e o CSS do cabeçalho
+header_html_content = header_html()
+header_css_content = header_css()
+
+# Insira o CSS na página (antes do HTML)
+st.markdown(f"<style>{header_css_content}</style>", unsafe_allow_html=True)
+
+# Insira o cabeçalho na página
+st.markdown(header_html_content, unsafe_allow_html=True)
+
 def adicionar_pessoa():
     with st.form("Adicionar Novo", clear_on_submit=True):
         st.subheader("Adicionar Nova Pessoa")
