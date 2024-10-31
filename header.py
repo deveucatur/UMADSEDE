@@ -2,7 +2,7 @@ def header_html(page, nome = ""):
     header = f"""<div class="fixed">
             <div class="menu">
                 <div class="logo">
-                    <img src="https://raw.githubusercontent.com/RahyanRamos/LogoNineBox/main/logo.png" alt="Logo do 9Box">
+                    <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png?raw=true" alt="Logo do 9Box">
                 </div>
                 <div class="botoes">
                     <!-- <a href="https://meusprojetos-mpjj.streamlit.app/" target="_self"><button type="button" id="home">Home</button></a>
