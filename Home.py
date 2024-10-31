@@ -25,13 +25,13 @@ def add_custom_css():
             /* Cabeçalhos */
             .main-header {
                 font-size: 2.5rem;
-                color: #1f4e79;
+                color: #FF7F00;  /* Laranja */
                 font-weight: bold;
                 margin-bottom: 1rem;
             }
             .sub-header {
                 font-size: 1.75rem;
-                color: #1f4e79;
+                color: #FF7F00;  /* Laranja */
                 font-weight: bold;
                 margin-top: 2rem;
                 margin-bottom: 1rem;
@@ -51,7 +51,7 @@ def add_custom_css():
             .metric-value {
                 font-size: 2rem;
                 font-weight: bold;
-                color: #1f4e79;
+                color: #FF7F00;  /* Laranja */
             }
             /* Rodapé */
             .footer {
@@ -59,6 +59,23 @@ def add_custom_css():
                 color: #666666;
                 margin-top: 2rem;
                 font-size: 0.9rem;
+            }
+            /* Cartões */
+            .card {
+                background-color: #ffffff;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                margin-bottom: 1rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #333333;
+            }
+            .card-content {
+                font-size: 1rem;
+                color: #666666;
             }
             /* Remover o menu de hambúrguer e o rodapé do Streamlit */
             #MainMenu {visibility: hidden;}
@@ -71,24 +88,7 @@ add_custom_css()
 # Cabeçalho Principal
 st.markdown('<h1 class="main-header">UMADSEDE - União da Mocidade e Adolescentes da Sede</h1>', unsafe_allow_html=True)
 
-# Seções de Propósito e Visão
-st.markdown('<h2 class="sub-header">Propósito e Visão</h2>', unsafe_allow_html=True)
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("""
-        <p style="font-size: 1.1rem; color: #333333;">
-            <strong>Propósito:</strong><br>
-            Unir e fortalecer os jovens e adolescentes na fé, promovendo crescimento espiritual, comunhão e serviço à comunidade.
-        </p>
-    """, unsafe_allow_html=True)
-with col2:
-    st.markdown("""
-        <p style="font-size: 1.1rem; color: #333333;">
-            <strong>Visão a Longo Prazo:</strong><br>
-            Ser uma geração comprometida com os princípios cristãos, impactando positivamente a sociedade através do amor, respeito e dedicação ao próximo.
-        </p>
-    """, unsafe_allow_html=True)
+# Removido a seção de Propósito e Visão
 
 # Seção de Eventos
 st.markdown('<h2 class="sub-header">Eventos</h2>', unsafe_allow_html=True)
@@ -182,26 +182,32 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown('<h3>Aniversariantes da Semana</h3>', unsafe_allow_html=True)
     if aniversariantes_semana:
-        aniversariantes_data = [{
-            'Nome': pessoa.nome,
-            'Tipo': pessoa.tipo,
-            'Data de Nascimento': pessoa.data_nascimento.strftime('%d/%m')
-        } for pessoa in aniversariantes_semana]
-        df_aniversariantes = pd.DataFrame(aniversariantes_data)
-        st.table(df_aniversariantes)
+        for pessoa in aniversariantes_semana:
+            st.markdown(f"""
+                <div class="card">
+                    <div class="card-title">{pessoa.nome}</div>
+                    <div class="card-content">
+                        <strong>Tipo:</strong> {pessoa.tipo}<br>
+                        <strong>Data de Nascimento:</strong> {pessoa.data_nascimento.strftime('%d/%m')}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
     else:
         st.write("Nenhum aniversariante nesta semana.")
 
 with col2:
     st.markdown('<h3>Eventos desta Semana</h3>', unsafe_allow_html=True)
     if eventos_semana:
-        eventos_data = [{
-            'Nome': evento.nome,
-            'Data': evento.data.strftime('%d/%m/%Y'),
-            'Tipo': evento.tipo
-        } for evento in eventos_semana]
-        df_eventos_semana = pd.DataFrame(eventos_data)
-        st.table(df_eventos_semana)
+        for evento in eventos_semana:
+            st.markdown(f"""
+                <div class="card">
+                    <div class="card-title">{evento.nome}</div>
+                    <div class="card-content">
+                        <strong>Data:</strong> {evento.data.strftime('%d/%m/%Y')}<br>
+                        <strong>Tipo:</strong> {evento.tipo}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
     else:
         st.write("Nenhum evento nesta semana.")
 
@@ -302,30 +308,64 @@ with col4:
 # Gráficos
 st.markdown('<h3>Gráficos</h3>', unsafe_allow_html=True)
 
-# Gráfico de Batizados nas Águas e no Espírito Santo
-st.markdown('<h4>Distribuição de Batizados</h4>', unsafe_allow_html=True)
-batizados_data = {
-    'Categoria': ['Batizados nas Águas', 'Batizados no Espírito Santo', 'Não Batizados'],
-    'Quantidade': [
-        total_batizados_aguas,
-        total_batizados_espirito,
-        total_pessoas - (total_batizados_aguas + total_batizados_espirito)
-    ]
-}
-df_batizados = pd.DataFrame(batizados_data)
-fig_batizados = px.pie(
-    df_batizados,
-    names='Categoria',
-    values='Quantidade',
-    color='Categoria',
-    color_discrete_map={
-        'Batizados nas Águas': '#1f77b4',
-        'Batizados no Espírito Santo': '#2ca02c',
-        'Não Batizados': '#d62728'
-    },
-    title='Distribuição de Batizados entre os Participantes'
-)
-st.plotly_chart(fig_batizados, use_container_width=True)
+# Gráfico de Frequência por Pessoa
+st.markdown('<h4>Frequência por Pessoa</h4>', unsafe_allow_html=True)
+frequencia = {}
+for presenca in presencas_filtradas:
+    if presenca.pessoa_id not in frequencia:
+        frequencia[presenca.pessoa_id] = {'Nome': '', 'Tipo': '', 'Presenças': 0, 'Ausências': 0}
+    pessoa = session.query(Pessoa).filter_by(id=presenca.pessoa_id).first()
+    frequencia[presenca.pessoa_id]['Nome'] = pessoa.nome
+    frequencia[presenca.pessoa_id]['Tipo'] = pessoa.tipo
+    if presenca.presente:
+        frequencia[presenca.pessoa_id]['Presenças'] += 1
+    else:
+        frequencia[presenca.pessoa_id]['Ausências'] += 1
+
+dados_frequencia = list(frequencia.values())
+df_frequencia = pd.DataFrame(dados_frequencia)
+
+if not df_frequencia.empty:
+    df_frequencia = df_frequencia.sort_values('Presenças', ascending=False)
+    fig_frequencia = px.bar(
+        df_frequencia,
+        x='Nome',
+        y='Presenças',
+        color='Tipo',
+        title='Frequência de Presença por Pessoa',
+        labels={'Presenças': 'Quantidade de Presenças'},
+        hover_data=['Ausências']
+    )
+    fig_frequencia.update_xaxes(tickangle=-45)
+    st.plotly_chart(fig_frequencia, use_container_width=True)
+else:
+    st.info("Não há dados de frequência para o período selecionado.")
+
+# Gráfico de Visitantes por Semana
+st.markdown('<h4>Visitantes por Semana</h4>', unsafe_allow_html=True)
+visitantes_por_semana = session.query(
+    func.strftime("%W", Evento.data).label("semana"),
+    func.count(Visitante.id)
+).join(Evento, Visitante.evento_id == Evento.id).filter(
+    Evento.data >= data_inicio,
+    Evento.data < data_fim,
+    Evento.tipo.in_(tipo_evento_filter)
+).group_by("semana").all()
+
+if visitantes_por_semana:
+    df_visitantes_semana = pd.DataFrame(visitantes_por_semana, columns=['Semana', 'Visitantes'])
+    df_visitantes_semana['Semana'] = df_visitantes_semana['Semana'].astype(int)
+    df_visitantes_semana = df_visitantes_semana.sort_values('Semana')
+    fig_visitantes_semana = px.line(
+        df_visitantes_semana,
+        x='Semana',
+        y='Visitantes',
+        markers=True,
+        title='Visitantes por Semana'
+    )
+    st.plotly_chart(fig_visitantes_semana, use_container_width=True)
+else:
+    st.info("Não há dados de visitantes para o período selecionado.")
 
 # Gráfico de Presenças por Evento
 st.markdown('<h4>Presenças por Evento</h4>', unsafe_allow_html=True)
@@ -358,36 +398,72 @@ if not df_presencas.empty:
 else:
     st.info("Não há dados de presenças para o período selecionado.")
 
-# Gráfico de Distribuição por Tipo
-st.markdown('<h4>Distribuição por Tipo</h4>', unsafe_allow_html=True)
-tipo_data = {
-    'Tipo': ['Jovens', 'Adolescentes'],
-    'Quantidade': [total_jovens, total_adolescentes]
-}
-df_tipo = pd.DataFrame(tipo_data)
-fig_tipo = px.pie(
-    df_tipo,
-    names='Tipo',
-    values='Quantidade',
-    title='Distribuição de Jovens e Adolescentes'
-)
-st.plotly_chart(fig_tipo, use_container_width=True)
+# Gráficos de Pizza Lado a Lado
+st.markdown('<h4>Distribuições</h4>', unsafe_allow_html=True)
+col1, col2 = st.columns(2)
 
-# Gráfico de Status (Ativo/Inativo)
-st.markdown('<h4>Status dos Participantes</h4>', unsafe_allow_html=True)
-status_counts = session.query(Pessoa.status, func.count(Pessoa.id)).group_by(Pessoa.status).all()
-status_data = {
-    'Status': [status for status, count in status_counts],
-    'Quantidade': [count for status, count in status_counts]
-}
-df_status = pd.DataFrame(status_data)
-fig_status = px.pie(
-    df_status,
-    names='Status',
-    values='Quantidade',
-    title='Status dos Participantes'
-)
-st.plotly_chart(fig_status, use_container_width=True)
+with col1:
+    # Gráfico de Distribuição de Batizados
+    batizados_data = {
+        'Categoria': ['Batizados nas Águas', 'Batizados no Espírito Santo', 'Não Batizados'],
+        'Quantidade': [
+            total_batizados_aguas,
+            total_batizados_espirito,
+            total_pessoas - (total_batizados_aguas + total_batizados_espirito)
+        ]
+    }
+    df_batizados = pd.DataFrame(batizados_data)
+    fig_batizados = px.pie(
+        df_batizados,
+        names='Categoria',
+        values='Quantidade',
+        color='Categoria',
+        color_discrete_map={
+            'Batizados nas Águas': '#1f77b4',
+            'Batizados no Espírito Santo': '#2ca02c',
+            'Não Batizados': '#d62728'
+        },
+        title='Distribuição de Batizados'
+    )
+    st.plotly_chart(fig_batizados, use_container_width=True)
+
+with col2:
+    # Gráfico de Distribuição por Tipo
+    tipo_data = {
+        'Tipo': ['Jovens', 'Adolescentes'],
+        'Quantidade': [total_jovens, total_adolescentes]
+    }
+    df_tipo = pd.DataFrame(tipo_data)
+    fig_tipo = px.pie(
+        df_tipo,
+        names='Tipo',
+        values='Quantidade',
+        title='Distribuição por Tipo'
+    )
+    st.plotly_chart(fig_tipo, use_container_width=True)
+
+# Outra linha de gráficos de pizza
+col3, col4 = st.columns(2)
+
+with col3:
+    # Gráfico de Status (Ativo/Inativo)
+    status_counts = session.query(Pessoa.status, func.count(Pessoa.id)).group_by(Pessoa.status).all()
+    status_data = {
+        'Status': [status for status, count in status_counts],
+        'Quantidade': [count for status, count in status_counts]
+    }
+    df_status = pd.DataFrame(status_data)
+    fig_status = px.pie(
+        df_status,
+        names='Status',
+        values='Quantidade',
+        title='Status dos Participantes'
+    )
+    st.plotly_chart(fig_status, use_container_width=True)
+
+with col4:
+    # Você pode adicionar outro gráfico relevante aqui
+    pass
 
 # Rodapé
 st.markdown('<div class="footer">💒 Igreja Assembleia de Deus - Ministério de Jovens e Adolescentes UMADSEDE</div>', unsafe_allow_html=True)
