@@ -1,23 +1,10 @@
-def header_html(page, nome = ""):
+def header_html(nome=""):
     header = f"""<div class="fixed">
             <div class="menu">
                 <div class="logo">
                     <img src="https://github.com/deveucatur/UMADSEDE/blob/main/logo.png?raw=true" alt="Logo do 9Box">
                 </div>
-                <div class="botoes">
-                    <!-- <a href="https://meusprojetos-mpjj.streamlit.app/" target="_self"><button type="button" id="home">Home</button></a>
-                    <a href="https://meusprojetos-mpjj.streamlit.app/Meus_Projetos" target="_self"><button type="button" id="projetos">Projetos</button></a>
-                    <a href="https://meusprojetos-mpjj.streamlit.app/Pr%C3%AAmio" target="_self"><button type="button" id="premio">Prêmio</button></a> -->
-                    <div class="page"><p>{page}</p></div>
-                </div>
                 <div class="nome"><p>{nome}</p></div>
-                <div class="icone">
-                    <!-- <button type="button"><img src="https://cdn-icons-png.flaticon.com/128/5261/5261124.png" alt="ícone de configurações para alteração do módulo de uso"></button>
-                    <div class="modulo">
-                        <a href="https://meusprojetos-mpjj.streamlit.app/"><button type="button">Módulo de Execução</button></a>
-                        <a href="https://meusprojetos-mpjj-mg.streamlit.app/"><button type="button">Módulo de Gestão</button></a>
-                    </div> -->
-                </div>
             </div>
         </div>"""
     return header
