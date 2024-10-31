@@ -19,8 +19,6 @@ def criar_evento():
                 tipo_evento = st.selectbox("Tipo do Evento", ["Jovens", "Adolescentes", "Ambos"])
             with col2:
                 data_evento = st.date_input("Data do Evento", value=datetime.date.today())
-                # Opcional: campo para encerrar o evento na criação
-                # encerrado = st.checkbox("Encerrar Evento?", value=False)
             submit = st.form_submit_button("Criar Evento")
 
             if submit:
@@ -28,7 +26,7 @@ def criar_evento():
                     nome=nome_evento,
                     data=data_evento,
                     tipo=tipo_evento,
-                    encerrado=False  # Definimos como False ao criar um novo evento
+                    encerrado=False
                 )
                 session.add(novo_evento)
                 session.commit()
@@ -87,31 +85,31 @@ def registrar_presenca():
         )
 
         # Visitantes
-        with st.expander("Adicionar Visitantes"):
-            num_visitantes = st.number_input("Número de Visitantes", min_value=0, step=1)
-            visitantes = []
-            for i in range(int(num_visitantes)):
-                with st.expander(f"Visitante {i+1}"):
-                    nome_visitante = st.text_input(f"Nome do Visitante {i+1}", key=f"nome_visitante_{i}")
-                    telefone_visitante = st.text_input(f"Telefone do Visitante {i+1}", key=f"telefone_visitante_{i}")
+        st.subheader("Adicionar Visitantes")
+        num_visitantes = st.number_input("Número de Visitantes", min_value=0, step=1)
+        visitantes = []
+        for i in range(int(num_visitantes)):
+            st.markdown(f"**Visitante {i+1}**")
+            nome_visitante = st.text_input(f"Nome do Visitante {i+1}", key=f"nome_visitante_{i}")
+            telefone_visitante = st.text_input(f"Telefone do Visitante {i+1}", key=f"telefone_visitante_{i}")
 
-                    if pessoas:
-                        convidado_por = st.selectbox(
-                            f"Convidado por",
-                            pessoas,
-                            format_func=lambda x: x.nome,
-                            key=f"convidado_por_{i}"
-                        )
-                        convidado_por_id = convidado_por.id
-                    else:
-                        st.warning("Não há pessoas disponíveis para selecionar como 'Convidado por'.")
-                        convidado_por_id = None
+            if pessoas:
+                convidado_por = st.selectbox(
+                    f"Convidado por",
+                    pessoas,
+                    format_func=lambda x: x.nome,
+                    key=f"convidado_por_{i}"
+                )
+                convidado_por_id = convidado_por.id
+            else:
+                st.warning("Não há pessoas disponíveis para selecionar como 'Convidado por'.")
+                convidado_por_id = None
 
-                    visitantes.append({
-                        'nome': nome_visitante,
-                        'telefone': telefone_visitante,
-                        'convidado_por_id': convidado_por_id
-                    })
+            visitantes.append({
+                'nome': nome_visitante,
+                'telefone': telefone_visitante,
+                'convidado_por_id': convidado_por_id
+            })
 
         if st.button("Registrar Presenças"):
             # Criar um conjunto de IDs dos presentes
