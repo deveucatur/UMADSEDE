@@ -33,7 +33,7 @@ def criar_evento():
                 session.add(novo_evento)
                 session.commit()
                 st.success(f"Evento '{nome_evento}' criado com sucesso!")
-                st.experimental_rerun()
+                st.rerun()
 
 def registrar_presenca():
     with tab2:
@@ -141,7 +141,7 @@ def registrar_presenca():
             evento_selecionado.encerrado = True
             session.commit()
             st.success("Presenças registradas e evento encerrado com sucesso!")
-            st.experimental_rerun()
+            st.rerun()
 
 def historico_eventos():
     with tab3:
