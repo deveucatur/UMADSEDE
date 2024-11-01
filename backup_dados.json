@@ -1068,39 +1068,6 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 106,
-            "nome": "Arthur Pidgurnei",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 108,
-            "nome": "Eloa Nathaly",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 109,
-            "nome": "Estefany vitória",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
             "id": 110,
             "nome": "Ana Beatriz dos Santos",
             "data_nascimento": "2000-01-01",
