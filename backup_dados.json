@@ -375,17 +375,6 @@
             "observacao": ""
         },
         {
-            "id": 35,
-            "nome": "Anna Victoria Barreto Cunegundes",
-            "data_nascimento": "2008-12-12",
-            "telefone": "9 9228-7267",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Jovem",
-            "observacao": ""
-        },
-        {
             "id": 36,
             "nome": "Andressa do Nascimento França",
             "data_nascimento": "2005-06-08",
@@ -500,17 +489,6 @@
             "nome": "Ghenyfer Martins Farias",
             "data_nascimento": "2003-09-29",
             "telefone": "9 9320-9352",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Jovem",
-            "observacao": ""
-        },
-        {
-            "id": 47,
-            "nome": "Giulia Novais Vieira",
-            "data_nascimento": "2005-10-09",
-            "telefone": "98453-8190",
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
@@ -695,7 +673,7 @@
         },
         {
             "id": 64,
-            "nome": "Miguel Novas Vieira",
+            "nome": "Miguel Novais Vieira",
             "data_nascimento": "2012-10-29",
             "telefone": "",
             "batizado_aguas": false,
@@ -783,7 +761,7 @@
         },
         {
             "id": 72,
-            "nome": "Igual de Souza",
+            "nome": "Miguel de Souza",
             "data_nascimento": "2011-07-24",
             "telefone": "",
             "batizado_aguas": true,
@@ -1090,52 +1068,8 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 101,
-            "nome": "Miguel de Souza",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 104,
-            "nome": "Isabelly Aloncio dos Anjos",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 105,
-            "nome": "Matheus Henrique Pereira de Godoi",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
             "id": 106,
             "nome": "Arthur Pidgurnei",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 107,
-            "nome": "Gabrielly Vitorya F. Silva",
             "data_nascimento": "2000-01-01",
             "telefone": "",
             "batizado_aguas": true,
