@@ -749,6 +749,17 @@
             "observacao": ""
         },
         {
+            "id": 71,
+            "nome": "Homero Maciel Pedroza",
+            "data_nascimento": "2011-12-04",
+            "telefone": "",
+            "batizado_aguas": false,
+            "batizado_espirito": false,
+            "status": "Inativo",
+            "tipo": "Adolescente",
+            "observacao": "Autista"
+        },
+        {
             "id": 72,
             "nome": "Miguel de Souza",
             "data_nascimento": "2011-07-24",
@@ -855,7 +866,7 @@
             "batizado_aguas": true,
             "batizado_espirito": false,
             "status": "Ativo",
-            "tipo": "Jovem",
+            "tipo": "Adolescente",
             "observacao": ""
         },
         {
@@ -1031,7 +1042,7 @@
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
-            "tipo": "Jovem",
+            "tipo": "Adolescente",
             "observacao": ""
         },
         {
@@ -1042,7 +1053,7 @@
             "batizado_aguas": true,
             "batizado_espirito": false,
             "status": "Ativo",
-            "tipo": "Jovem",
+            "tipo": "Adolescente",
             "observacao": ""
         },
         {
@@ -1627,6 +1638,12 @@
             "presente": true
         },
         {
+            "id": 71,
+            "pessoa_id": 84,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
             "id": 72,
             "pessoa_id": 85,
             "evento_id": 2,
@@ -1773,6 +1790,18 @@
         {
             "id": 96,
             "pessoa_id": 121,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 97,
+            "pessoa_id": 123,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 98,
+            "pessoa_id": 124,
             "evento_id": 2,
             "presente": true
         }
