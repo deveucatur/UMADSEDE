@@ -526,7 +526,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua 2 de Abril. n\u00ba 61, Centro\n\nM\u00e3e: Nilma de Souza - Fone: 69 99375-3349"
         },
         {
             "id": 51,
@@ -823,18 +823,18 @@
             "batizado_espirito": false,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Sebasti\u00e3o Dias da Silva, n\u00ba 3074, Copas Verde\n\nM\u00e3e: Renata Macedo Leite - Fone: 69 99301-4672\nPai: Everton Luiz Leite da Silva - Fone: 69 99332-4250"
         },
         {
             "id": 78,
-            "nome": "Isabelly Alonvio dos Anjos",
+            "nome": "Isabelly Aloncio dos Anjos",
             "data_nascimento": "2009-12-21",
             "telefone": "",
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua Monte Alegre, n\u00ba 73, Colina Park II.\n\nM\u00e3e: Marcia da Concei\u00e7\u00e3o Aloncio - Fone: 69 99281-7651\n\nPai: Jeferson dos Anjos Silva - Fone: 69 99258-5141"
         },
         {
             "id": 79,
@@ -845,7 +845,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua dos Colegiais, Parque S\u00e3o Pedro.\n\nM\u00e3e: Val\u00e9ria Ribeiro Fran\u00e7a - Fone: 69 99288-7552\n\nPai: Josu\u00e9 da Silva Souza:"
         },
         {
             "id": 80,
@@ -856,7 +856,7 @@
             "batizado_espirito": false,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua Carlos Drummond de Andrade, n\u00ba 754, Parque S\u00e3o Pedro.\n\nM\u00e3e: Jocineia da Silva Martins - Fone: 69 99944-2016;\nPai: Rafael da Silva Antonio."
         },
         {
             "id": 81,
@@ -867,18 +867,18 @@
             "batizado_espirito": false,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua Joaquim Francisco Olveira, n\u00ba 891, Jorge Teixeira.\n\nM\u00e3e: Ros\u00e2ngela Santos da Silva Machado - Fone: 69 99209-0726\n\nPai: Jos\u00e9 Diniz Machado Junior"
         },
         {
             "id": 82,
-            "nome": "Rhuan Carlos F. Xavier",
+            "nome": "Rhuan Carlos Rangel F. Xavier",
             "data_nascimento": "2009-05-13",
             "telefone": "",
             "batizado_aguas": true,
             "batizado_espirito": false,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Rua Leonardo Alves da Costa, n\u00ba 1.025, Colina Park I;\n\nM\u00e3e: Luziane de Lanes Souza (Madastra), Fone: 69 98474-1523 e 98432-5037;\n\nPai: Ruan Carlos Ferreira Xavier, Fone: 69 98474-1523."
         },
         {
             "id": 83,
