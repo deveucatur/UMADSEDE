@@ -152,7 +152,7 @@ def editar_pessoa(pessoa_id):
                     pessoa.observacao = observacao
                     session.commit()
                     st.success("Atualizado com sucesso.")
-                    st.experimental_rerun()
+                    st.rerun()
     else:
         st.error("Pessoa não encontrada.")
 
