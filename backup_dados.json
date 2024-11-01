@@ -46,7 +46,7 @@
         },
         {
             "id": 5,
-            "nome": "Daniel Jerônimo dos Santos",
+            "nome": "Daniel Jer\u00f4nimo dos Santos",
             "data_nascimento": "2005-11-09",
             "telefone": "9 9218-8241",
             "batizado_aguas": true,
@@ -134,7 +134,7 @@
         },
         {
             "id": 13,
-            "nome": "Hélio Salomão Loubak",
+            "nome": "H\u00e9lio Salom\u00e3o Loubak",
             "data_nascimento": "2007-08-14",
             "telefone": "9 9375-0497",
             "batizado_aguas": true,
@@ -167,7 +167,7 @@
         },
         {
             "id": 16,
-            "nome": "José Luiz da Silva Neto",
+            "nome": "Jos\u00e9 Luiz da Silva Neto",
             "data_nascimento": "1995-06-11",
             "telefone": "9 9276-7556",
             "batizado_aguas": true,
@@ -178,7 +178,7 @@
         },
         {
             "id": 17,
-            "nome": "Josué Gabriel Guedes Ferreira",
+            "nome": "Josu\u00e9 Gabriel Guedes Ferreira",
             "data_nascimento": "2003-11-21",
             "telefone": "9 9219-3636",
             "batizado_aguas": true,
@@ -222,7 +222,7 @@
         },
         {
             "id": 21,
-            "nome": "Oséias Venâncio Júnior",
+            "nome": "Os\u00e9ias Ven\u00e2ncio J\u00fanior",
             "data_nascimento": "2005-07-28",
             "telefone": "9 9253-4149",
             "batizado_aguas": true,
@@ -233,7 +233,7 @@
         },
         {
             "id": 22,
-            "nome": "Paulo Júnior dos Santos",
+            "nome": "Paulo J\u00fanior dos Santos",
             "data_nascimento": "1986-09-11",
             "telefone": "9 9348-2848",
             "batizado_aguas": true,
@@ -376,7 +376,7 @@
         },
         {
             "id": 36,
-            "nome": "Andressa do Nascimento França",
+            "nome": "Andressa do Nascimento Fran\u00e7a",
             "data_nascimento": "2005-06-08",
             "telefone": "9 8414-4446",
             "batizado_aguas": true,
@@ -398,7 +398,7 @@
         },
         {
             "id": 38,
-            "nome": "Débora Keilla da Silva Bergamini",
+            "nome": "D\u00e9bora Keilla da Silva Bergamini",
             "data_nascimento": "1996-11-11",
             "telefone": "9 9377-3755",
             "batizado_aguas": true,
@@ -409,7 +409,7 @@
         },
         {
             "id": 39,
-            "nome": "Dhanielli de Souza Venâncio",
+            "nome": "Dhanielli de Souza Ven\u00e2ncio",
             "data_nascimento": "2002-12-24",
             "telefone": "9 8422-1891",
             "batizado_aguas": true,
@@ -431,7 +431,7 @@
         },
         {
             "id": 41,
-            "nome": "Fernanda Alejandra de Souza França",
+            "nome": "Fernanda Alejandra de Souza Fran\u00e7a",
             "data_nascimento": "2004-05-14",
             "telefone": "9 9221-3861",
             "batizado_aguas": true,
@@ -530,7 +530,7 @@
         },
         {
             "id": 51,
-            "nome": "Juliana Eduarda Xavier Damião",
+            "nome": "Juliana Eduarda Xavier Dami\u00e3o",
             "data_nascimento": "1998-05-06",
             "telefone": "9 8124-0449",
             "batizado_aguas": true,
@@ -585,7 +585,7 @@
         },
         {
             "id": 56,
-            "nome": "Monica Avilar Assunção Melo",
+            "nome": "Monica Avilar Assun\u00e7\u00e3o Melo",
             "data_nascimento": "2003-02-22",
             "telefone": "9 8120-8199",
             "batizado_aguas": true,
@@ -629,7 +629,7 @@
         },
         {
             "id": 60,
-            "nome": "Silvana Priscila Alcântara Maciel",
+            "nome": "Silvana Priscila Alc\u00e2ntara Maciel",
             "data_nascimento": "1985-03-05",
             "telefone": "9 9282-5526",
             "batizado_aguas": true,
@@ -662,7 +662,7 @@
         },
         {
             "id": 63,
-            "nome": "Vitória Emanuele Cardozo Alcântara",
+            "nome": "Vit\u00f3ria Emanuele Cardozo Alc\u00e2ntara",
             "data_nascimento": "2003-09-27",
             "telefone": "9 9313-8746",
             "batizado_aguas": true,
@@ -783,7 +783,7 @@
         },
         {
             "id": 74,
-            "nome": "João Pedro de Lima Barros",
+            "nome": "Jo\u00e3o Pedro de Lima Barros",
             "data_nascimento": "2009-12-15",
             "telefone": "",
             "batizado_aguas": true,
@@ -805,7 +805,7 @@
         },
         {
             "id": 76,
-            "nome": "Letícia Rodrigues Rocha",
+            "nome": "Let\u00edcia Rodrigues Rocha",
             "data_nascimento": "2010-07-05",
             "telefone": "",
             "batizado_aguas": false,
@@ -816,7 +816,7 @@
         },
         {
             "id": 77,
-            "nome": "Evelyn Vitória Macedo",
+            "nome": "Evelyn Vit\u00f3ria Macedo",
             "data_nascimento": "2012-04-10",
             "telefone": "",
             "batizado_aguas": false,
@@ -838,7 +838,7 @@
         },
         {
             "id": 79,
-            "nome": "Flavio França de Souza",
+            "nome": "Flavio Fran\u00e7a de Souza",
             "data_nascimento": "2012-07-23",
             "telefone": "",
             "batizado_aguas": false,
@@ -915,7 +915,7 @@
         },
         {
             "id": 86,
-            "nome": "Eloá Nathaly dos Santos Nascimento",
+            "nome": "Elo\u00e1 Nathaly dos Santos Nascimento",
             "data_nascimento": "2010-12-11",
             "telefone": "",
             "batizado_aguas": true,
@@ -1003,7 +1003,7 @@
         },
         {
             "id": 94,
-            "nome": "Estefany Vitória Rodrigues Alicrina",
+            "nome": "Estefany Vit\u00f3ria Rodrigues Alicrina",
             "data_nascimento": "2011-10-10",
             "telefone": "",
             "batizado_aguas": true,
@@ -1036,7 +1036,7 @@
         },
         {
             "id": 97,
-            "nome": "Assendor Junior de Souza França ",
+            "nome": "Assendor Junior de Souza Fran\u00e7a ",
             "data_nascimento": "2008-06-27",
             "telefone": "",
             "batizado_aguas": true,
@@ -1058,14 +1058,14 @@
         },
         {
             "id": 99,
-            "nome": "Alessandro Lúcio O. Júnior",
+            "nome": "Alessandro L\u00facio O. J\u00fanior",
             "data_nascimento": "2000-01-01",
             "telefone": "",
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 110,
@@ -1076,7 +1076,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 112,
@@ -1087,7 +1087,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 113,
@@ -1098,18 +1098,18 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 114,
-            "nome": "Lincoln Antônio Martins",
+            "nome": "Lincoln Ant\u00f4nio Martins",
             "data_nascimento": "2000-01-01",
             "telefone": "",
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 115,
@@ -1120,7 +1120,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 116,
@@ -1131,7 +1131,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 117,
@@ -1142,7 +1142,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 119,
@@ -1153,18 +1153,18 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 120,
-            "nome": "Amabily Buker Florêncio",
+            "nome": "Amabily Buker Flor\u00eancio",
             "data_nascimento": "2000-01-01",
             "telefone": "",
             "batizado_aguas": true,
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 121,
@@ -1175,7 +1175,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 123,
@@ -1186,7 +1186,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         },
         {
             "id": 124,
@@ -1197,7 +1197,7 @@
             "batizado_espirito": true,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
+            "observacao": "Ajustar dados de Batismo, Anivers\u00e1rio e telefone"
         }
     ],
     "eventos": [
@@ -1209,6 +1209,309 @@
             "tipo": "Adolescentes"
         }
     ],
-    "presencas": [],
-    "visitantes": []
+    "presencas": [
+        {
+            "id": 1,
+            "pessoa_id": 50,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 2,
+            "pessoa_id": 64,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 3,
+            "pessoa_id": 65,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 4,
+            "pessoa_id": 66,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 5,
+            "pessoa_id": 67,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 6,
+            "pessoa_id": 68,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 7,
+            "pessoa_id": 69,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 8,
+            "pessoa_id": 70,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 9,
+            "pessoa_id": 71,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 10,
+            "pessoa_id": 72,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 11,
+            "pessoa_id": 73,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 12,
+            "pessoa_id": 74,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 13,
+            "pessoa_id": 75,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 14,
+            "pessoa_id": 76,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 15,
+            "pessoa_id": 77,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 16,
+            "pessoa_id": 78,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 17,
+            "pessoa_id": 79,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 18,
+            "pessoa_id": 80,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 19,
+            "pessoa_id": 81,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 20,
+            "pessoa_id": 82,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 21,
+            "pessoa_id": 83,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 22,
+            "pessoa_id": 84,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 23,
+            "pessoa_id": 85,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 24,
+            "pessoa_id": 86,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 25,
+            "pessoa_id": 87,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 26,
+            "pessoa_id": 88,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 27,
+            "pessoa_id": 89,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 28,
+            "pessoa_id": 90,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 29,
+            "pessoa_id": 91,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 30,
+            "pessoa_id": 92,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 31,
+            "pessoa_id": 93,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 32,
+            "pessoa_id": 94,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 33,
+            "pessoa_id": 95,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 34,
+            "pessoa_id": 96,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 35,
+            "pessoa_id": 97,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 36,
+            "pessoa_id": 98,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 37,
+            "pessoa_id": 99,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 38,
+            "pessoa_id": 110,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 39,
+            "pessoa_id": 112,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 40,
+            "pessoa_id": 113,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 41,
+            "pessoa_id": 114,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 42,
+            "pessoa_id": 115,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 43,
+            "pessoa_id": 116,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 44,
+            "pessoa_id": 117,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 45,
+            "pessoa_id": 119,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 46,
+            "pessoa_id": 120,
+            "evento_id": 1,
+            "presente": true
+        },
+        {
+            "id": 47,
+            "pessoa_id": 121,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 48,
+            "pessoa_id": 123,
+            "evento_id": 1,
+            "presente": false
+        },
+        {
+            "id": 49,
+            "pessoa_id": 124,
+            "evento_id": 1,
+            "presente": false
+        }
+    ],
+    "visitantes": [
+        {
+            "id": 1,
+            "nome": "Kaylaine",
+            "telefone": "999564561",
+            "convidado_por": 114,
+            "evento_id": 1
+        }
+    ]
 }
