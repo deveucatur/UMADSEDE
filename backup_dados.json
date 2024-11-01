@@ -735,7 +735,7 @@
             "batizado_espirito": false,
             "status": "Ativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Endere\u00e7o: Av. Marechal Rondon, 111, B. Centro, antiga IEAD. \nRespons\u00e1veis: Isabel de Souza Lopes - 69 99315-6260 e Miriam de Souza - 69 99232-5093."
         },
         {
             "id": 70,
@@ -755,9 +755,9 @@
             "telefone": "",
             "batizado_aguas": false,
             "batizado_espirito": false,
-            "status": "Ativo",
+            "status": "Inativo",
             "tipo": "Adolescente",
-            "observacao": ""
+            "observacao": "Autista"
         },
         {
             "id": 72,
@@ -1207,6 +1207,13 @@
             "data": "2024-10-31",
             "encerrado": false,
             "tipo": "Adolescentes"
+        },
+        {
+            "id": 2,
+            "nome": "Acampa Teens",
+            "data": "2024-11-01",
+            "encerrado": false,
+            "tipo": "Adolescentes"
         }
     ],
     "presencas": [
@@ -1503,6 +1510,300 @@
             "pessoa_id": 124,
             "evento_id": 1,
             "presente": false
+        },
+        {
+            "id": 50,
+            "pessoa_id": 50,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 51,
+            "pessoa_id": 64,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 52,
+            "pessoa_id": 65,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 53,
+            "pessoa_id": 66,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 54,
+            "pessoa_id": 67,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 55,
+            "pessoa_id": 68,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 56,
+            "pessoa_id": 69,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 57,
+            "pessoa_id": 70,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 58,
+            "pessoa_id": 71,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 59,
+            "pessoa_id": 72,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 60,
+            "pessoa_id": 73,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 61,
+            "pessoa_id": 74,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 62,
+            "pessoa_id": 75,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 63,
+            "pessoa_id": 76,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 64,
+            "pessoa_id": 77,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 65,
+            "pessoa_id": 78,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 66,
+            "pessoa_id": 79,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 67,
+            "pessoa_id": 80,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 68,
+            "pessoa_id": 81,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 69,
+            "pessoa_id": 82,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 70,
+            "pessoa_id": 83,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 71,
+            "pessoa_id": 84,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 72,
+            "pessoa_id": 85,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 73,
+            "pessoa_id": 86,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 74,
+            "pessoa_id": 87,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 75,
+            "pessoa_id": 88,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 76,
+            "pessoa_id": 89,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 77,
+            "pessoa_id": 90,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 78,
+            "pessoa_id": 91,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 79,
+            "pessoa_id": 92,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 80,
+            "pessoa_id": 93,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 81,
+            "pessoa_id": 94,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 82,
+            "pessoa_id": 95,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 83,
+            "pessoa_id": 96,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 84,
+            "pessoa_id": 97,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 85,
+            "pessoa_id": 98,
+            "evento_id": 2,
+            "presente": false
+        },
+        {
+            "id": 86,
+            "pessoa_id": 99,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 87,
+            "pessoa_id": 110,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 88,
+            "pessoa_id": 112,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 89,
+            "pessoa_id": 113,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 90,
+            "pessoa_id": 114,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 91,
+            "pessoa_id": 115,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 92,
+            "pessoa_id": 116,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 93,
+            "pessoa_id": 117,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 94,
+            "pessoa_id": 119,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 95,
+            "pessoa_id": 120,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 96,
+            "pessoa_id": 121,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 97,
+            "pessoa_id": 123,
+            "evento_id": 2,
+            "presente": true
+        },
+        {
+            "id": 98,
+            "pessoa_id": 124,
+            "evento_id": 2,
+            "presente": true
         }
     ],
     "visitantes": [
