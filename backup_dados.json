@@ -1278,17 +1278,6 @@
         },
         {
             "id": 117,
-            "nome": "Eloisa Cordeiro Morais",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 118,
             "nome": "Daniel Amorim de silveira",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1299,18 +1288,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 119,
-            "nome": "Gabrielly Franco Santana",
-            "data_nascimento": "2000-01-01",
-            "telefone": "",
-            "batizado_aguas": true,
-            "batizado_espirito": true,
-            "status": "Ativo",
-            "tipo": "Adolescente",
-            "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
-        },
-        {
-            "id": 120,
+            "id": 118,
             "nome": "Maria Eduarda santos",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1321,7 +1299,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 121,
+            "id": 119,
             "nome": "Ana Clara Belussi Brito",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1332,7 +1310,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 122,
+            "id": 120,
             "nome": "Amabily Buker Florêncio",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1343,7 +1321,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 123,
+            "id": 121,
             "nome": "Emilly Antunes Ribeiro",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1354,7 +1332,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 124,
+            "id": 122,
             "nome": "Victor Oliveira",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1365,7 +1343,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 125,
+            "id": 123,
             "nome": "Julia Maria Alves Silva",
             "data_nascimento": "2000-01-01",
             "telefone": "",
@@ -1376,7 +1354,7 @@
             "observacao": "Ajustar dados de Batismo, Aniversário e telefone"
         },
         {
-            "id": 126,
+            "id": 124,
             "nome": "Sara Alves Silva",
             "data_nascimento": "2000-01-01",
             "telefone": "",
