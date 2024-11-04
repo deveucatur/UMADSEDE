@@ -1214,6 +1214,13 @@
             "data": "2024-11-01",
             "encerrado": false,
             "tipo": "Adolescentes"
+        },
+        {
+            "id": 3,
+            "nome": "Culto de Quinta",
+            "data": "2024-11-07",
+            "encerrado": false,
+            "tipo": "Adolescentes"
         }
     ],
     "presencas": [
