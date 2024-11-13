@@ -1221,6 +1221,13 @@
             "data": "2024-11-07",
             "encerrado": false,
             "tipo": "Adolescentes"
+        },
+        {
+            "id": 4,
+            "nome": "Culto Enraizados ",
+            "data": "2024-11-14",
+            "encerrado": false,
+            "tipo": "Adolescentes"
         }
     ],
     "presencas": [
